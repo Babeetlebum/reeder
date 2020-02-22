@@ -1,0 +1,11 @@
+@import '~@angular/material/theming';
+@import '~src/scss/colors';
+
+// Include the common styles for Angular Material
+@include mat-core();
+
+@include angular-material-theme($candy-app-theme);
+
+.dark-theme {
+  @include angular-material-theme($dark-theme);
+}

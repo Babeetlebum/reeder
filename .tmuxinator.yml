@@ -1,0 +1,38 @@
+name:                         reeder
+root:                         ./
+
+parameters:
+    four_panes_layout_v2:     &four_panes_layout_v2 b4ff,213x60,0,0[213x15,0,0,1,213x44,0,16[213x12,0,16{106x12,0,16,9,106x12,107,16,26},213x31,0,29,27]]
+
+windows:
+  - frontend:
+      layout: *four_panes_layout_v2
+      panes:
+        - p1:
+            - clear
+        - p2:
+            - yarn run docker:connect
+            - sleep 5
+            - clear
+        - p3:
+            - yarn run docker:connect
+            - sleep 5
+            - clear
+        - p4:
+            - clear
+  - backend:
+      layout: *four_panes_layout_v2
+      panes:
+        - p1:
+            - cd docker
+            - clear
+        - p2:
+            - sleep 10
+            - docker exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -ti --user=user java-tutorial_builder bash
+            - clear
+        - p3:
+            - sleep 10
+            - docker exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -ti --user=user java-tutorial_builder bash
+            - clear
+        - p4:
+            - clear

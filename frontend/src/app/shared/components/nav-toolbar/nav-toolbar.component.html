@@ -1,0 +1,37 @@
+<mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="20px">
+
+    <ng-template [ngIf]="userConnected" [ngIfElse]="offlineMode">
+    <button mat-icon-button
+        routerLink="/home"
+        routerLinkActive="active"
+        matTooltip="Home"
+    >
+        <mat-icon aria-hidden="true" color="secondary">whatshot</mat-icon>
+    </button>
+
+    <button mat-button (click)="redirect('/users')">Users</button>
+
+    <div fxFlex="grow"></div>
+
+    <button mat-icon-button
+        routerLink="/profile"
+        routerLinkActive="active"
+        matTooltip="Profile"
+    >
+        <mat-icon>account_circle</mat-icon>
+    </button>
+
+    <button mat-icon-button
+        routerLink="/login"
+        routerLinkActive="active"
+        matTooltip="Disconnect"
+    >
+        <mat-icon>exit_to_app</mat-icon>
+    </button>
+    </ng-template>
+
+    <ng-template #offlineMode>
+        <mat-icon aria-hidden="true" color="secondary">whatshot</mat-icon>
+    </ng-template>
+
+</mat-toolbar>

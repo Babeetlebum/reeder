@@ -1,0 +1,53 @@
+version: "3"
+services:
+    builder:
+        build:
+            context: builder/
+        volumes:
+            - ..:/app
+            - ~/.m2:/home/user/.m2
+        entrypoint: "tail -f /dev/null"
+        networks:
+            - default_local
+
+    server:
+        build:
+                context: server/
+        volumes:
+            - ../target:/app
+        ports:
+            - 8080
+        environment:
+            - VIRTUAL_HOST=${COMPOSE_PROJECT_NAME}.local
+        entrypoint: "tail -f /dev/null"
+        networks:
+            - default_local
+    db:
+        image: mysql:8.0.19
+        volumes:
+            - ../db:/db
+        ports:
+            - 3306:3306
+        command: --default-authentication-plugin=mysql_native_password
+        environment:
+            MYSQL_ROOT_PASSWORD: mysql
+        networks:
+            - default_local
+
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin:latest
+        ports:
+            - 8080
+        environment:
+            - VIRTUAL_HOST=db.${COMPOSE_PROJECT_NAME}.local
+            - MYSQL_ROOT_PASSWORD=mysql
+            - PMA_USERNAME=alfred
+            - PMA_PASSWORD=kwak
+        links:
+            - db
+        networks:
+            - default_local
+
+networks:
+    default_local:
+        external: true

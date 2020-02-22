@@ -1,6 +1,4 @@
-package com.example.restservice;
-
-import java.util.concurrent.atomic.AtomicLong;
+package com.reeder.restreeder.controller.v1.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,10 +8,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.example.restservice.UserRepository;
+import com.reeder.restreeder.repository.user.UserRepository;
+import com.reeder.restreeder.model.user.User;
 
 @Controller
-@RequestMapping(path="/users")
+@RequestMapping(path="/api/v1/user")
 public class UserController {
 
     @Autowired

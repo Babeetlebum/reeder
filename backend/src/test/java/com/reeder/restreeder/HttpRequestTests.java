@@ -1,4 +1,4 @@
-package com.example.restservice;
+package com.reeder.restreeder;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -19,16 +19,16 @@ public class HttpRequestTests {
 	@Autowired
 	private TestRestTemplate restTemplate;
 
-	@Test
-	public void greetingsShouldReturnDefaultMessage() throws Exception {
-		assertThat(this.restTemplate.getForObject("http://localhost:" + this.port + "/greeting", String.class))
-			.contains("Hello World");
-	}
-
-	@Test
-	public void greetingsShouldReturnNameInMessage() throws Exception {
-		assertThat(this.restTemplate.getForObject("http://localhost:" + this.port + "/greeting", String.class))
-			.contains("Hello World");
-	}
+	// @Test
+	// public void greetingsShouldReturnDefaultMessage() throws Exception {
+	// 	assertThat(this.restTemplate.getForObject("http://localhost:" + this.port + "/greeting", String.class))
+	// 		.contains("Hello World");
+	// }
+	//
+	// @Test
+	// public void greetingsShouldReturnNameInMessage() throws Exception {
+	// 	assertThat(this.restTemplate.getForObject("http://localhost:" + this.port + "/greeting", String.class))
+	// 		.contains("Hello World");
+	// }
 
 }

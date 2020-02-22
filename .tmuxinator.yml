@@ -9,30 +9,37 @@ windows:
       layout: *four_panes_layout_v2
       panes:
         - p1:
+            - cd frontend/docker
             - clear
         - p2:
+            - cd frontend
             - yarn run docker:connect
-            - sleep 5
+            - sleep 10
             - clear
         - p3:
+            - cd frontend
             - yarn run docker:connect
-            - sleep 5
+            - sleep 10
             - clear
         - p4:
+            - cd frontend
             - clear
   - backend:
       layout: *four_panes_layout_v2
       panes:
         - p1:
-            - cd docker
+            - cd backend/docker
             - clear
         - p2:
+            - cd backend/docker
             - sleep 10
-            - docker exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -ti --user=user java-tutorial_builder bash
+            - docker exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -ti --user=user reeder_server_1 sh
             - clear
         - p3:
+            - cd backend/docker
             - sleep 10
-            - docker exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -ti --user=user java-tutorial_builder bash
+            - docker exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -ti --user=user reeder_builder_1 bash
             - clear
         - p4:
+            - cd backend/docker
             - clear

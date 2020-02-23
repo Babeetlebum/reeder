@@ -15,8 +15,11 @@ import com.reeder.restreeder.model.book.Book;
 @RequestMapping(path="/api/v1/book")
 public class BookController {
 
-    @Autowired
-    private BookRepository bookRepository;
+    private final BookRepository bookRepository;
+
+    public BookController(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+    }
 
     @GetMapping("/all")
     public @ResponseBody Iterable<Book> getAllBooks() {

@@ -6,5 +6,4 @@ import com.reeder.restreeder.model.book.Book;
 
 public interface BookRepository extends CrudRepository<Book, Integer> {
     Book findByTitle(String title);
-    long deleteByTitle(String title);
 }

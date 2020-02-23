@@ -22,6 +22,8 @@ services:
         entrypoint: "tail -f /dev/null"
         networks:
             - default_local
+#   gutenberg:
+#         image: cwolff/gutenberg-http
     db:
         image: mysql:8.0.19
         volumes:

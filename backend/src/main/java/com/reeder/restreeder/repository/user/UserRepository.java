@@ -6,5 +6,4 @@
 
     public interface UserRepository extends CrudRepository<User, Integer> {
         User findByEmail(String email);
-        long deleteByEmail(String email);
     }

@@ -1,22 +1,21 @@
 package com.reeder.restreeder;
 
+import com.reeder.restreeder.model.book.Book;
+import com.reeder.restreeder.model.book.Chapter;
+import com.reeder.restreeder.model.book.Paragraph;
+import com.reeder.restreeder.model.user.User;
+import com.reeder.restreeder.repository.book.BookRepository;
+import com.reeder.restreeder.repository.book.ChapterRepository;
+import com.reeder.restreeder.repository.book.ParagraphRepository;
+import com.reeder.restreeder.repository.user.UserRepository;
+import com.reeder.restreeder.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import com.reeder.restreeder.repository.user.UserRepository;
-import com.reeder.restreeder.repository.book.BookRepository;
-import com.reeder.restreeder.repository.book.ChapterRepository;
-import com.reeder.restreeder.repository.book.ParagraphRepository;
-import com.reeder.restreeder.model.user.User;
-import com.reeder.restreeder.model.book.Book;
-import com.reeder.restreeder.model.book.Chapter;
-import com.reeder.restreeder.model.book.Paragraph;
-
-import java.util.HashSet;
-import java.util.Arrays;
+import java.io.IOException;
 
 @SpringBootApplication
 public class RestReederApplication {
@@ -30,7 +29,8 @@ public class RestReederApplication {
 			@Autowired UserRepository userRepository,
 	        @Autowired BookRepository bookRepository,
 			@Autowired ChapterRepository chapterRepository,
-	        @Autowired ParagraphRepository paragraphRepository
+	        @Autowired ParagraphRepository paragraphRepository,
+		 	@Autowired BookService bookService
 		) {
 	        return args -> {
 	            //Create a user and a book
@@ -90,6 +90,17 @@ public class RestReederApplication {
 					chapterRepository.save(chapter);
 	            }
 
+				try {
+					Book gutenbergBook = bookService.getBook(37106);
+					System.out.println("GutenbergBook");
+					System.out.println(gutenbergBook);
+				} catch(IOException e) {
+					System.out.println("CommandLineRunner - IOException");
+					System.out.println(e.getMessage());
+				} catch(Exception e) {
+					System.out.println("CommandLineRunner - Exception");
+					System.out.println(e.getMessage());
+				}
 	    };
 	}
 

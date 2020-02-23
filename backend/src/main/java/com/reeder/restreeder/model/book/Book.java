@@ -1,28 +1,21 @@
 package com.reeder.restreeder.model.book;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GenerationType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Id;
-
-import java.util.HashSet;
-import java.util.Set;
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 
-import com.reeder.restreeder.model.book.Chapter;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @Accessors(chain = true)
+@ToString
 public class Book {
 
     @Id

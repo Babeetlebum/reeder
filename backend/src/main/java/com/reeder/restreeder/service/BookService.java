@@ -4,4 +4,5 @@ import com.reeder.restreeder.model.book.Book;
 
 public interface BookService {
     Book getBook(Integer id) throws Exception;
+
 }

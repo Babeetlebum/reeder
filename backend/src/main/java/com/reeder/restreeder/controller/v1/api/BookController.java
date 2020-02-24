@@ -1,39 +1,46 @@
 package com.reeder.restreeder.controller.v1.api;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.reeder.restreeder.repository.book.BookRepository;
+import com.reeder.restreeder.dto.book.mapper.BookMapper;
+import com.reeder.restreeder.dto.book.model.BookAddDto;
+import com.reeder.restreeder.dto.book.model.BookDto;
+import com.reeder.restreeder.exception.BookNotFoundException;
 import com.reeder.restreeder.model.book.Book;
+import com.reeder.restreeder.repository.book.BookRepository;
+import com.reeder.restreeder.service.BookService;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @Controller
 @RequestMapping(path="/api/v1/book")
 public class BookController {
 
     private final BookRepository bookRepository;
+    private final BookService bookService;
+    private final BookMapper bookMapper;
 
-    public BookController(BookRepository bookRepository) {
+    public BookController(BookRepository bookRepository, BookService bookService, BookMapper bookMapper) {
         this.bookRepository = bookRepository;
+        this.bookService = bookService;
+        this.bookMapper = bookMapper;
     }
 
-    @GetMapping("/all")
-    public @ResponseBody Iterable<Book> getAllBooks() {
-        return bookRepository.findAll();
+    @GetMapping("/{bookId}")
+    public @ResponseBody
+    BookDto getWholeBooks(@PathVariable("bookId") Integer bookId) throws BookNotFoundException {
+        Optional<Book> foundBook = bookRepository.findById(bookId);
+        return foundBook
+                .map(bookMapper::toDto)
+                .orElseThrow(() -> new BookNotFoundException(bookId));
     }
 
     @PostMapping("/add")
-    public @ResponseBody String addNewBook(
-        @RequestParam String id
-    ) {
-        Book book = new Book();
+    public @ResponseBody
+    BookDto addNewBook(@RequestBody BookAddDto bookAddDto) throws Exception {
+        Book book = bookService.getBook(bookAddDto.getBookId());
         bookRepository.save(book);
-
-        return String.format("Added book with name %s", book.getTitle());
+        return bookMapper.toDto(book);
     }
 
 }

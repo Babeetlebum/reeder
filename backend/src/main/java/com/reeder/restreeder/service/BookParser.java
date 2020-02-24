@@ -4,6 +4,6 @@ import com.reeder.restreeder.model.book.Book;
 
 public interface BookParser {
 
-    Book parseBook(String bookString) throws Exception ;
+    Book parseBook(Integer bookId, String bookString) throws Exception ;
 
 }

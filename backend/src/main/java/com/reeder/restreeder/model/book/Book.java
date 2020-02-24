@@ -22,16 +22,17 @@ public class Book {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
 
-    private String gutenbergId;
+    private String externalId;
 
     private String title;
 
-    @OneToMany(mappedBy="book", fetch = FetchType.EAGER)
-    private Set<Chapter> chapters = new HashSet<>();
+    @OneToMany(mappedBy="book", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    private Set<Paragraph> paragraphs = new HashSet<>();
 
-    public Book addChapter(Chapter chapter) {
-		this.chapters.add(chapter);
-		chapter.setBook(this);
+    public Book addParagraph(Paragraph paragraph) {
+        paragraph.setDelta(this.paragraphs.size() + 1);
+        paragraph.setBook(this);
+        this.paragraphs.add(paragraph);
 
         return this;
 	}

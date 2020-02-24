@@ -1,43 +1,46 @@
 package com.reeder.restreeder.service.gutenberg;
 
+import com.reeder.restreeder.exception.BookParsingException;
 import com.reeder.restreeder.model.book.Book;
+import com.reeder.restreeder.model.book.Paragraph;
 import com.reeder.restreeder.service.BookParser;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.springframework.stereotype.Service;
+
+import java.io.BufferedReader;
+import java.io.StringReader;
 
 @Service
 public class GutenbergBookParser implements BookParser {
 
     @Override
-    public Book parseBook(String bookString) throws Exception {
-        Document doc = Jsoup.parse(bookString);
-        System.out.println("parseBook");
+    public Book parseBook(Integer bookId, String bookString) throws Exception {
+        Book book = new Book()
+                .setTitle("Book Title");
 
-        Book book = this.initBookData(doc);
+        StringReader streamReader = null;
+        BufferedReader reader = null;
 
-        Element chapterElement = doc.select("p #I").first();
-        System.out.println(chapterElement.text());
-
-        Element chapterTitleElement = chapterElement.nextElementSibling();
-        if (chapterTitleElement == null) {
-            throw new Exception("chapter title not found");
+        try {
+            String line;
+            streamReader = new StringReader(bookString);
+            reader = new BufferedReader(streamReader);
+            while ((line = reader.readLine()) != null) {
+                book.addParagraph(new Paragraph().setContent(line));
+            }
         }
-        System.out.println(chapterTitleElement.text());
-
-        Element firstParagraph = chapterTitleElement.nextElementSibling();
-        if (firstParagraph == null) {
-            throw new Exception("first paragraph not found");
+        catch (Exception e) {
+            throw new BookParsingException(bookId, e.getMessage());
         }
-        System.out.println(firstParagraph.text());
+        finally {
+            if (streamReader != null) {
+                streamReader.close();
+            }
+            if (reader != null) {
+                reader.close();
+            }
+        }
 
         return book;
-    }
-
-    private Book initBookData(Document doc) {
-        return new Book()
-            .setTitle(doc.select("h1").text());
     }
 
 }

@@ -1,5 +1,9 @@
 package com.reeder.restreeder.service.gutenberg;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.reeder.restreeder.dto.gutenberg.GutenbergBookDto;
+import com.reeder.restreeder.dto.gutenberg.GutenbergErrorDto;
+import com.reeder.restreeder.exception.GutenbergBookNotFoundException;
 import com.reeder.restreeder.service.BookGetter;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -12,22 +16,23 @@ import java.util.Objects;
 @Service
 public class GutenbergBookGetter implements BookGetter {
     private final OkHttpClient client = new OkHttpClient();
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     @Override
-    public String getBook(Integer id) throws IOException {
+    public String getBook(Integer bookId) throws IOException {
         Request request = new Request.Builder()
-            .url("https://www.gutenberg.org/files/37106/37106-h/37106-h.htm")
+            .url(String.format("https://gutenberg.justamouse.com/texts/%s/body", bookId))
             .build();
 
         // synchronous call
         Response response = client.newCall(request).execute();
 
         if (!response.isSuccessful()) {
-            // TODO: exception handling
-            throw new IOException("Unexpected code " + response);
+            GutenbergErrorDto error = objectMapper.readValue(Objects.requireNonNull(response.body()).string(), GutenbergErrorDto.class);
+            throw new GutenbergBookNotFoundException(bookId, error);
         }
-
-        return Objects.requireNonNull(response.body()).string();
+        GutenbergBookDto gutenbergBook = objectMapper.readValue(Objects.requireNonNull(response.body()).string(), GutenbergBookDto.class);
+        return gutenbergBook.getBody();
     }
 
 }

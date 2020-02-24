@@ -9,10 +9,9 @@ public class BookServiceImpl implements BookService {
     private final BookGetter bookGetter;
     private final BookParser bookParser;
 
-    // injecting BookGetter and BookParser services
     public BookServiceImpl(
-        BookGetter bookGetter,
-        BookParser bookParser
+            BookGetter bookGetter,
+            BookParser bookParser
     ) {
         this.bookGetter = bookGetter;
         this.bookParser = bookParser;
@@ -20,6 +19,7 @@ public class BookServiceImpl implements BookService {
 
     public Book getBook(Integer id) throws Exception {
         String bookString = bookGetter.getBook(id);
-        return bookParser.parseBook(bookString);
+        return bookParser.parseBook(id, bookString);
     }
+
 }

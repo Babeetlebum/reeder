@@ -16,7 +16,6 @@ public class RestReederApplication {
 	}
 
 
-	// FIXME Custom Exception don't send a body
 	// FIXME NotEmpty on Dto doesn't work
 	// TODO getBook only Chapters
 	// TODO get list books

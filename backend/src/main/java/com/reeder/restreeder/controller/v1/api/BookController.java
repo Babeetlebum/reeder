@@ -3,7 +3,7 @@ package com.reeder.restreeder.controller.v1.api;
 import com.reeder.restreeder.dto.book.mapper.BookMapper;
 import com.reeder.restreeder.dto.book.model.BookAddDto;
 import com.reeder.restreeder.dto.book.model.BookDto;
-import com.reeder.restreeder.exception.BookNotFoundException;
+import com.reeder.restreeder.exception.exceptions.BookNotFoundException;
 import com.reeder.restreeder.model.book.Book;
 import com.reeder.restreeder.repository.book.BookRepository;
 import com.reeder.restreeder.service.BookService;

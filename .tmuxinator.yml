@@ -14,12 +14,12 @@ windows:
         - p2:
             - cd frontend
             - yarn run docker:connect
-            - sleep 10
+            - sleep 60
             - clear
         - p3:
             - cd frontend
             - yarn run docker:connect
-            - sleep 10
+            - sleep 60
             - clear
         - p4:
             - cd frontend
@@ -32,12 +32,12 @@ windows:
             - clear
         - p2:
             - cd backend/docker
-            - sleep 10
+            - sleep 60
             - docker exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -ti --user=user reeder_server_1 sh
             - clear
         - p3:
             - cd backend/docker
-            - sleep 10
+            - sleep 60
             - docker exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -ti --user=user reeder_builder_1 bash
             - clear
         - p4:

@@ -1,4 +1,4 @@
-package com.reeder.restreeder.exception;
+package com.reeder.restreeder.exception.exceptions;
 
 public class BookParsingException extends RuntimeException {
     public BookParsingException(Integer bookId, String message) {

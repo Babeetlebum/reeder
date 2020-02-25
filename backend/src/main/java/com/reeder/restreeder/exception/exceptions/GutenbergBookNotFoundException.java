@@ -1,4 +1,4 @@
-package com.reeder.restreeder.exception;
+package com.reeder.restreeder.exception.exceptions;
 
 import com.reeder.restreeder.dto.gutenberg.GutenbergErrorDto;
 

@@ -1,6 +1,6 @@
 package com.reeder.restreeder.service.gutenberg;
 
-import com.reeder.restreeder.exception.BookParsingException;
+import com.reeder.restreeder.exception.exceptions.BookParsingException;
 import com.reeder.restreeder.model.book.Book;
 import com.reeder.restreeder.model.book.Paragraph;
 import com.reeder.restreeder.service.BookParser;

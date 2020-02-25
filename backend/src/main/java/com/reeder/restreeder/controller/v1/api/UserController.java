@@ -3,6 +3,7 @@ package com.reeder.restreeder.controller.v1.api;
 import com.reeder.restreeder.dto.user.mapper.UserMapper;
 import com.reeder.restreeder.dto.user.model.UserAddDto;
 import com.reeder.restreeder.dto.user.model.UserDto;
+import com.reeder.restreeder.exception.exceptions.UserNotFoundException;
 import com.reeder.restreeder.model.user.User;
 import com.reeder.restreeder.repository.user.UserRepository;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,14 @@ public class UserController {
     public UserController(UserRepository userRepository, UserMapper userMapper) {
         this.userRepository = userRepository;
         this.userMapper = userMapper;
+    }
+
+    @GetMapping("/{userId}")
+    public @ResponseBody
+    UserDto getAllUsers(@PathVariable("userId") Integer userId) {
+        return userRepository.findById(userId)
+                .map(userMapper::toDto)
+                .orElseThrow(() -> new UserNotFoundException(userId));
     }
 
     @GetMapping("/all")

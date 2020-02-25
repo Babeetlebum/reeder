@@ -1,4 +1,4 @@
-package com.reeder.restreeder.exception;
+package com.reeder.restreeder.exception.exceptions;
 
 public class BookNotFoundException extends RuntimeException {
     public BookNotFoundException(Integer id) {

@@ -15,8 +15,8 @@ import javax.validation.constraints.NotEmpty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UserAddDto {
 
-    @NotEmpty(message = "{constraints.NotEmpty.message}")
+    @NotEmpty(message = "Please provide a name")
     private String name;
-    @NotEmpty(message = "{constraints.NotEmpty.message}")
+    @NotEmpty(message = "Please provide an email")
     private String email;
 }

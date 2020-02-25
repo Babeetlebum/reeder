@@ -9,6 +9,7 @@ import com.reeder.restreeder.repository.user.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -43,7 +44,7 @@ public class UserController {
 
     @PostMapping("/add")
     public @ResponseBody
-    UserDto addNewUser(@RequestBody UserAddDto userAddDto) {
+    UserDto addNewUser(@Valid @RequestBody UserAddDto userAddDto) {
         User foundUser = userRepository.findByEmailOrName(userAddDto.getEmail(), userAddDto.getName());
         if (foundUser == null) {
             User user = userMapper.fromAddDto(userAddDto);

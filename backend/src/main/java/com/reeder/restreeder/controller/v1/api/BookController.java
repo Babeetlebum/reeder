@@ -10,6 +10,7 @@ import com.reeder.restreeder.service.BookService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller
@@ -37,7 +38,7 @@ public class BookController {
 
     @PostMapping("/add")
     public @ResponseBody
-    BookDto addNewBook(@RequestBody BookAddDto bookAddDto) throws Exception {
+    BookDto addNewBook(@Valid @RequestBody BookAddDto bookAddDto) throws Exception {
         Book book = bookService.getBook(bookAddDto.getBookId());
         bookRepository.save(book);
         return bookMapper.toDto(book);

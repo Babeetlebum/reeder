@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
@@ -14,6 +14,7 @@ import javax.validation.constraints.NotEmpty;
 @Accessors(chain = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class BookAddDto {
-    @NotEmpty(message = "{constraints.NotEmpty.message}")
+
+    @NotNull(message = "Please provide a bookId")
     private Integer bookId;
 }

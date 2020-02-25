@@ -1,33 +1,36 @@
 package com.reeder.restreeder.exception;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.experimental.Accessors;
+import lombok.Builder;
+import lombok.Data;
+import lombok.Singular;
+import lombok.ToString;
 import org.springframework.http.HttpStatus;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @XmlRootElement(name = "error")
-@Getter
-@Setter
-@NoArgsConstructor
-@Accessors(chain = true)
+@Data
+@Builder
+@ToString
 public class ErrorResponse {
 
     private LocalDateTime timestamp;
     private Integer status;
-    @JsonIgnore
-    private HttpStatus httpStatus;
+    @JsonIgnore private HttpStatus httpStatus;
     private String error;
-    private String message;
+    @Singular private List<String> messages;
     private String path;
 
-    public ErrorResponse setHttpStatus(HttpStatus httpStatus) {
-        this.httpStatus = httpStatus;
-        this.status = httpStatus.value();
-        return this;
+    @SuppressWarnings("unused")
+    public static class ErrorResponseBuilder {
+        // override the lombok builder method to serialize the http status as integer
+        public ErrorResponseBuilder httpStatus(HttpStatus httpStatus) {
+            this.httpStatus = httpStatus;
+            this.status = httpStatus.value();
+            return this;
+        }
     }
 }

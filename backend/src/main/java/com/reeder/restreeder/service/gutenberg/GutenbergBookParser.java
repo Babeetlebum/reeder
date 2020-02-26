@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
 import java.io.StringReader;
+import java.util.ArrayList;
 
 @Service
 public class GutenbergBookParser implements BookParser {
@@ -20,12 +21,22 @@ public class GutenbergBookParser implements BookParser {
         StringReader streamReader = null;
         BufferedReader reader = null;
 
+        // initialize the paragraphs array with a large capacity to save CPU cycles
+        final ArrayList<Paragraph>paragraphs = new ArrayList<>(1000);
+
         try {
             String line;
             streamReader = new StringReader(bookString);
             reader = new BufferedReader(streamReader);
+
+
             while ((line = reader.readLine()) != null) {
-                book.addParagraph(new Paragraph().setContent(line));
+                Paragraph paragraph = Paragraph.builder()
+                        .content(line)
+                        .delta(paragraphs.size() + 1)
+                        .book(book)
+                        .build();
+                paragraphs.add(paragraph);
             }
         }
         catch (Exception e) {
@@ -39,7 +50,8 @@ public class GutenbergBookParser implements BookParser {
                 reader.close();
             }
         }
-
+        paragraphs.trimToSize();
+        book.setParagraphs(paragraphs);
         return book;
     }
 

@@ -15,12 +15,9 @@ public class RestReederApplication {
 		SpringApplication.run(RestReederApplication.class, args);
 	}
 
-	// TODO getBook only Chapters
-	// TODO get list books
 	// TODO add book save async, returns chapters (3min for add book)
 	// TODO add properties to user (password, date created)
 	// TODO add books to users
-	// TODO migrate objects to immutables (Lombok Builder)
 	//
 	@Bean
 	    CommandLineRunner init(

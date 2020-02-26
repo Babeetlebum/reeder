@@ -1,19 +1,15 @@
 package com.reeder.restreeder.model.book;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-import lombok.experimental.Accessors;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
+@Builder
 @Getter
-@Setter
 @ToString
 @NoArgsConstructor
-@Accessors(chain = true)
+@AllArgsConstructor
 @Table(indexes = {@Index(columnList = "delta")})
 public class Paragraph {
 

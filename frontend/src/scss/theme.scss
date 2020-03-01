@@ -4,7 +4,7 @@
 // Include the common styles for Angular Material
 @include mat-core();
 
-@include angular-material-theme($candy-app-theme);
+@include angular-material-theme($reed-theme);
 
 .dark-theme {
   @include angular-material-theme($dark-theme);

@@ -1,25 +1,27 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { AuthLayoutComponent } from '@layout/layouts/';
 
 const routes: Routes = [
   {
-    path: 'learn',
-    loadChildren: () => import('./modules/learn/learn.module').then(m => m.LearnModule),
-  },
-  {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'learn',
+    redirectTo: 'auth',
+  },
+  {
+    path: 'auth',
+    component: AuthLayoutComponent,
+    loadChildren: () => import('./modules/auth/auth.module').then((m) => m.AuthModule),
   },
   {
     path: '**',
-    redirectTo: 'learn',
+    redirectTo: 'auth',
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -8,9 +8,8 @@ describe('NavToolbarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NavToolbarComponent ]
-    })
-    .compileComponents();
+      declarations: [NavToolbarComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

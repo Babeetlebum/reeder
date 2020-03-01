@@ -36,8 +36,8 @@ RUN apk add --no-cache bash
 #   rm ${YARN_VERSION}.tar.gz*
 
 # Install angular-cli
-ARG NG_CLI_VERSION=8.3.21
-RUN yarn global add --prefix /usr/local @angular/cli@${NG_CLI_VERSION}
+#ARG NG_CLI_VERSION=8.3.21
+#RUN yarn global add --prefix /usr/local @angular/cli@${NG_CLI_VERSION}
 
 ARG USER_NAME=node
 USER ${USER_NAME}

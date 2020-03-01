@@ -2,15 +2,15 @@
 @import '~src/scss/custom-colors';
 
 // Default Theme
-// $candy-app-primary: mat-palette($mat-indigo);
-// $candy-app-accent:  mat-palette($mat-pink, A200, A100, A400);
-// $candy-app-warn:    mat-palette($mat-red);
+// $reed-primary: mat-palette($mat-indigo);
+// $reed-accent:  mat-palette($mat-pink, A200, A100, A400);
+// $reed-warn:    mat-palette($mat-red);
 
-$candy-app-primary:     mat-palette($custom-purple);
-$candy-app-accent:      mat-palette($custom-yellow, A200, A100, A400);
-$candy-app-warn:        mat-palette($custom-red);
+$reed-primary:     mat-palette($custom-purple);
+$reed-accent:      mat-palette($custom-yellow, A200, A100, A400);
+$reed-warn:        mat-palette($custom-red);
 
-$candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn);
+$reed-theme: mat-light-theme($reed-primary, $reed-accent, $reed-warn);
 
 // Dark Theme
 // $dark-primary:     mat-palette($mat-blue-grey);

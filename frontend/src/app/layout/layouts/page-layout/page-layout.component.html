@@ -1,0 +1,17 @@
+<div class="page-layout" fxLayout="column">
+  <reed-nav-toolbar></reed-nav-toolbar>
+
+  <mat-sidenav-container fxFlex="grow" fxLayout="column">
+    <mat-sidenav-content>
+      <div class="content" fxFlex="grow" fxLayout="row" fxLayoutAlign="center">
+        <div [fxFlex]="70" fxLayout="column" fxLayoutAlign="center">
+          <div fxFlex="90">
+            <ng-content></ng-content>
+          </div>
+        </div>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+  <reed-footer></reed-footer>
+</div>

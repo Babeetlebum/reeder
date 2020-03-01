@@ -1,0 +1,66 @@
+<form [formGroup]="signupForm" (ngSubmit)="signUp()" fxLayout="column" fxLayoutAlign="space-evenly" fxFill>
+  <mat-card-header class="sign-up__title" fxLayout="row" fxLayoutAlign="center center" fxFlex="25">
+    <mat-card-title>
+      <mat-icon class="sign-up__title__icon" aria-hidden="true" color="primary">whatshot</mat-icon>
+      Sign up
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content class="sign-up__content" fxLayout="column" fxLayoutAlign="space-around" fxFlex="grow">
+    <div fxLayout="row" fxLayoutAlign="center">
+      <mat-form-field fxFlex="70">
+        <input matInput placeholder="Username" type="text" formControlName="username" />
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="center">
+      <mat-form-field fxFlex="70">
+        <input matInput placeholder="Email" type="text" formControlName="email" />
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="center">
+      <div fxLayout="row" fxFlex="70" fxLayoutAlign="space-between">
+        <mat-form-field fxFlex="45">
+          <input
+            matInput
+            placeholder="Password"
+            [type]="hidePassword ? 'password' : 'text'"
+            formControlName="password"
+          />
+          <mat-icon class="sign-up__content__icon" matSuffix (click)="hidePassword = !hidePassword">{{
+            hidePassword ? 'visibility_off' : 'visibility'
+          }}</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field fxFlex="45">
+          <input
+            matInput
+            placeholder="Confirm password"
+            [type]="hideConfirmPassword ? 'password' : 'text'"
+            formControlName="confirmPassword"
+          />
+          <mat-icon matSuffix class="sign-up__content__icon" (click)="hideConfirmPassword = !hideConfirmPassword">{{
+            hideConfirmPassword ? 'visibility_off' : 'visibility'
+          }}</mat-icon>
+        </mat-form-field>
+      </div>
+    </div>
+  </mat-card-content>
+
+  <mat-spinner class="sign-up__spinner" [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+
+  <mat-card-actions class="sign-up__actions" fxLayout="column" fxLayoutAlign="center center" fxFlex="25">
+    <div fxFlex="66">
+      <button mat-raised-button color="primary" type="submit" [disabled]="!signupForm.valid">
+        Sign up
+      </button>
+    </div>
+    <mat-divider></mat-divider>
+    <div fxFlex="33">
+      <button mat-raised-button color="basic" type="button" (click)="goToLogin()">
+        Already have an account ? Log in !
+      </button>
+    </div>
+  </mat-card-actions>
+</form>

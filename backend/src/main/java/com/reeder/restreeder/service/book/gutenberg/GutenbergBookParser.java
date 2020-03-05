@@ -1,9 +1,9 @@
-package com.reeder.restreeder.service.gutenberg;
+package com.reeder.restreeder.service.book.gutenberg;
 
 import com.reeder.restreeder.exception.exceptions.BookParsingException;
 import com.reeder.restreeder.model.book.Book;
 import com.reeder.restreeder.model.book.Paragraph;
-import com.reeder.restreeder.service.BookParser;
+import com.reeder.restreeder.service.book.BookParser;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;

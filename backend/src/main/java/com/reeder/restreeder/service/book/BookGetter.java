@@ -1,4 +1,4 @@
-package com.reeder.restreeder.service;
+package com.reeder.restreeder.service.book;
 
 import java.io.IOException;
 

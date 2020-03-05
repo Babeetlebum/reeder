@@ -19,4 +19,6 @@ public class UserAddDto {
     private String name;
     @NotEmpty(message = "Please provide an email")
     private String email;
+    @NotEmpty(message = "Please provide a password")
+    private String password;
 }

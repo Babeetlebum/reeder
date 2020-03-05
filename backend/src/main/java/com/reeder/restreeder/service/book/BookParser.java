@@ -1,4 +1,4 @@
-package com.reeder.restreeder.service;
+package com.reeder.restreeder.service.book;
 
 import com.reeder.restreeder.model.book.Book;
 

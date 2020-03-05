@@ -1,10 +1,10 @@
-package com.reeder.restreeder.service.gutenberg;
+package com.reeder.restreeder.service.book.gutenberg;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.reeder.restreeder.dto.gutenberg.GutenbergBookDto;
 import com.reeder.restreeder.dto.gutenberg.GutenbergErrorDto;
 import com.reeder.restreeder.exception.exceptions.GutenbergBookNotFoundException;
-import com.reeder.restreeder.service.BookGetter;
+import com.reeder.restreeder.service.book.BookGetter;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;

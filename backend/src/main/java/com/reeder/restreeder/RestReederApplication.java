@@ -7,6 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
 public class RestReederApplication {
@@ -16,7 +17,7 @@ public class RestReederApplication {
 	}
 
 	// TODO add book save async, returns chapters (3min for add book)
-	// TODO add properties to user (password, date created)
+	// TODO add properties to user (date created)
 	// TODO add books to users
 	//
 	@Bean
@@ -64,6 +65,11 @@ public class RestReederApplication {
 //					System.out.println(e.getMessage());
 //				}
 	    };
+	}
+
+	@Bean
+	public BCryptPasswordEncoder bCryptPasswordEncoder() {
+		return new BCryptPasswordEncoder();
 	}
 
 }

@@ -8,7 +8,7 @@ import com.reeder.restreeder.model.book.Book;
 import com.reeder.restreeder.model.book.Paragraph;
 import com.reeder.restreeder.repository.book.BookRepository;
 import com.reeder.restreeder.repository.book.ParagraphRepository;
-import com.reeder.restreeder.service.BookService;
+import com.reeder.restreeder.service.book.BookService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,10 +1,12 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 
+import { AuthService } from '@core/services';
+
 @NgModule({
   declarations: [],
   imports: [],
   exports: [],
-  providers: [],
+  providers: [AuthService],
 })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parentModule: CoreModule) {

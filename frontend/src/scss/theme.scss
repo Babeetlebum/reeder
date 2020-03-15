@@ -1,5 +1,5 @@
-@import '~@angular/material/theming';
-@import '~src/scss/colors';
+@import '@angular/material/theming';
+@import 'scss/colors';
 
 // Include the common styles for Angular Material
 @include mat-core();

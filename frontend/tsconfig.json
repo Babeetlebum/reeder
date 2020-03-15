@@ -19,7 +19,8 @@
       "@auth/*": ["src/app/modules/auth/*"],
       "@core/*": ["src/app/core/*"],
       "@layout/*": ["src/app/layout/*"],
-      "@shared/*": ["src/app/shared/*"]
+      "@shared/*": ["src/app/shared/*"],
+      "@store/*": ["src/app/store/*"]
     }
   },
   "angularCompilerOptions": {

@@ -4,8 +4,13 @@ import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // modules and components used in layouts
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatIconModule, MatToolbarModule, MatSidenavModule } from '@angular/material';
+import {
+  MatIconModule,
+  MatToolbarModule,
+  MatSidenavModule,
+  MatSnackBarModule,
+  MatTooltipModule,
+} from '@angular/material';
 import { FooterComponent, NavToolbarComponent } from '@layout/components';
 import { AuthLayoutComponent, PageLayoutComponent } from '@layout/layouts';
 
@@ -14,10 +19,11 @@ import { AuthLayoutComponent, PageLayoutComponent } from '@layout/layouts';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    FlexLayoutModule,
     MatIconModule,
     MatToolbarModule,
     MatSidenavModule,
+    MatSnackBarModule,
+    MatTooltipModule,
     RouterModule.forChild([]),
   ],
   exports: [AuthLayoutComponent, PageLayoutComponent],

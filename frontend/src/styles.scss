@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~src/scss/theme';
+@import 'scss/theme';
 
 html,
 body {
@@ -7,6 +7,6 @@ body {
 }
 
 body {
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
   margin: 0;
 }

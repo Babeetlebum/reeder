@@ -1,23 +1,26 @@
-<mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="20px">
-  <ng-template [ngIf]="userConnected" [ngIfElse]="offlineMode">
-    <button mat-icon-button routerLink="/home" routerLinkActive="active" matTooltip="Home">
-      <mat-icon aria-hidden="true" color="secondary">whatshot</mat-icon>
-    </button>
+<mat-toolbar color="primary" class="flex justify-center -mx-2">
+  <button class="px-2" mat-icon-button routerLink="/home" routerLinkActive="active" matTooltip="Home">
+    <mat-icon aria-hidden="true" color="secondary">whatshot</mat-icon>
+  </button>
 
-    <button mat-button (click)="redirect('/users')">Users</button>
+  <button class="px-2" mat-button>{{ connectedUserName$ | async }}</button>
 
-    <div fxFlex="grow"></div>
+  <div class="flex-grow"></div>
 
-    <button mat-icon-button routerLink="/profile" routerLinkActive="active" matTooltip="Profile">
+  <ng-template [ngIf]="isUserConnected$ | async">
+    <button class="px-2" mat-icon-button routerLink="/profile" routerLinkActive="active" matTooltip="Profile">
       <mat-icon>account_circle</mat-icon>
     </button>
 
-    <button mat-icon-button routerLink="/login" routerLinkActive="active" matTooltip="Disconnect">
+    <button
+      class="px-2"
+      (click)="logout()"
+      mat-icon-button
+      routerLink="/login"
+      routerLinkActive="active"
+      matTooltip="Disconnect"
+    >
       <mat-icon>exit_to_app</mat-icon>
     </button>
-  </ng-template>
-
-  <ng-template #offlineMode>
-    <mat-icon aria-hidden="true" color="secondary">whatshot</mat-icon>
   </ng-template>
 </mat-toolbar>

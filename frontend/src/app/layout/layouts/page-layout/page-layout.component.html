@@ -1,17 +1,11 @@
-<div class="page-layout" fxLayout="column">
+<div class="h-screen flex flex-col">
   <reed-nav-toolbar></reed-nav-toolbar>
 
-  <mat-sidenav-container fxFlex="grow" fxLayout="column">
-    <mat-sidenav-content>
-      <div class="content" fxFlex="grow" fxLayout="row" fxLayoutAlign="center">
-        <div [fxFlex]="70" fxLayout="column" fxLayoutAlign="center">
-          <div fxFlex="90">
-            <ng-content></ng-content>
-          </div>
-        </div>
-      </div>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+  <div class="flex justify-center items-center h-screen">
+    <div class="w-256 flex-shrink">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 
   <reed-footer></reed-footer>
 </div>

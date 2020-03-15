@@ -1,18 +1,38 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { Router } from '@angular/router';
+import { Observable, Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
+
+import * as fromAuth from '@store/reducers';
+import * as AuthActions from '@store/actions';
+import { selectConnectedUserName, selectHasErrorMessage, selectIsUserConnected } from '@store/selectors';
 
 @Component({
   selector: 'reed-nav-toolbar',
   styleUrls: ['./nav-toolbar.component.scss'],
   templateUrl: './nav-toolbar.component.html',
 })
-export class NavToolbarComponent {
-  protected userConnected = false;
+export class NavToolbarComponent implements OnDestroy, OnInit {
+  isUserConnected$: Observable<boolean>;
+  connectedUserName$: Observable<string>;
+  errorMessageSubscription: Subscription;
 
-  public constructor(private router: Router) {}
+  constructor(private store: Store<fromAuth.State>, private snackBar: MatSnackBar) {}
 
-  protected redirect(link: string) {
-    this.router.navigateByUrl(link);
+  ngOnInit() {
+    this.connectedUserName$ = this.store.select(selectConnectedUserName);
+    this.isUserConnected$ = this.store.select(selectIsUserConnected);
+    this.errorMessageSubscription = this.store
+      .pipe(selectHasErrorMessage)
+      .subscribe((error) => this.snackBar.open('Authentication error', error, { duration: 5000 }));
+  }
+
+  ngOnDestroy() {
+    this.errorMessageSubscription.unsubscribe();
+  }
+
+  logout() {
+    this.store.dispatch(AuthActions.logout());
   }
 }

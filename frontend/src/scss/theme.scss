@@ -3,7 +3,6 @@
 
 // Include the common styles for Angular Material
 @include mat-core();
-
 @include angular-material-theme($reed-theme);
 
 .dark-theme {

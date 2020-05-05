@@ -14,7 +14,7 @@ const PASSWORD_VALIDATOR = [Validators.required, Validators.minLength(6)];
 
 @Component({
   selector: 'reed-login',
-  styleUrls: ['./login.component.sass'],
+  styleUrls: ['./login.component.scss'],
   templateUrl: './login.component.html',
 })
 export class LoginComponent implements OnInit {

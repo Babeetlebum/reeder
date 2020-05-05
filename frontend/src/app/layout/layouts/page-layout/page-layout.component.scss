@@ -1,0 +1,9 @@
+@import '~src/scss/vars';
+
+.page-container {
+  height: calc(100% - 2 * #{$toolbar-height});
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

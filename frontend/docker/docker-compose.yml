@@ -1,18 +1,19 @@
-version: "3"
+version: '3'
 services:
-    frontend-builder:
-        build:
-            context: builder/.
-        volumes:
-            - ..:/app
-        ports:
-            - 4200
-        environment:
-            - VIRTUAL_HOST=${COMPOSE_PROJECT_NAME}.local
-        networks:
-            default_local:
-                aliases:
-                    - ${COMPOSE_PROJECT_NAME}.local
+  frontend-builder:
+    build:
+      context: builder/.
+    volumes:
+      - ../..:/app
+    working_dir: /app/frontend
+    ports:
+      - 4200
+    environment:
+      - VIRTUAL_HOST=${COMPOSE_PROJECT_NAME}.local
+    networks:
+      default_local:
+        aliases:
+          - ${COMPOSE_PROJECT_NAME}.local
 networks:
-    default_local:
-        external: true
+  default_local:
+    external: true

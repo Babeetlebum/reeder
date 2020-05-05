@@ -11,7 +11,7 @@ const PASSWORD_VALIDATOR = [Validators.required, Validators.minLength(6)];
 
 @Component({
   selector: 'reed-sign-up',
-  styleUrls: ['./sign-up.component.sass'],
+  styleUrls: ['./sign-up.component.scss'],
   templateUrl: './sign-up.component.html',
 })
 export class SignUpComponent {

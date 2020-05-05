@@ -6,7 +6,7 @@
   "version": "0.0.0",
   "scripts": {
     "mux": "yarn run docker:build && mux local",
-    "docker:up": "COMPOSE_PROJECT_NAME=reeder docker-compose -f docker/docker-compose.yml up",
+    "docker:up": "COMPOSE_PROJECT_NAME=reeder docker-compose -f docker/docker-compose.yml up --build",
     "docker:build": "COMPOSE_PROJECT_NAME=reeder docker-compose -f docker/docker-compose.yml build",
     "docker:connect": "docker exec -ti reeder_frontend-builder_1 /bin/bash",
     "dev": "ng serve --host 0.0.0.0 --disableHostCheck true --poll 5000",
@@ -15,8 +15,9 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "lint": "yarn run stylelint && ng lint",
+    "e2e": "ng e2e",
+    "stylelint": "stylelint **/*scss"
   },
   "private": true,
   "dependencies": {
@@ -49,6 +50,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "^5.0.0",
+    "husky": "^4.2.5",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.1.0",
@@ -61,8 +63,16 @@
     "postcss-scss": "^2.0.0",
     "prettier": "^1.19.1",
     "protractor": "~5.4.0",
+    "stylelint": "^13.3.3",
+    "stylelint-config-standard": "^20.0.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
     "typescript": "~3.5.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn run lint",
+      "pre-push": "yarn run test"
+    }
   }
 }

@@ -7,7 +7,7 @@
 // $reed-warn:    mat-palette($mat-red);
 
 $reed-primary: mat-palette($custom-purple);
-$reed-accent: mat-palette($custom-yellow, A200, A100, A400);
+$reed-accent: mat-palette($custom-yellow, a200, a100, a400);
 $reed-warn: mat-palette($custom-red);
 
 $reed-theme: mat-light-theme($reed-primary, $reed-accent, $reed-warn);
@@ -18,7 +18,7 @@ $reed-theme: mat-light-theme($reed-primary, $reed-accent, $reed-warn);
 // $dark-warn:        mat-palette($mat-deep-orange);
 
 $dark-primary: mat-palette($custom-purple);
-$dark-accent: mat-palette($custom-yellow, A200, A100, A400);
+$dark-accent: mat-palette($custom-yellow, a200, a100, a400);
 $dark-warn: mat-palette($custom-red);
 
 $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);

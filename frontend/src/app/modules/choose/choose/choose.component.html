@@ -1,0 +1,10 @@
+choose works !
+
+<button (click)="getBooks()">Get books</button>
+
+<mat-spinner [style.visibility]="(bookListLoading$ | async) ? 'visible' : 'hidden'" [diameter]="40"></mat-spinner>
+<!-- <mat-spinner [diameter]="40"></mat-spinner> -->
+
+<div *ngFor="let book of bookList$ | async">
+  {{ book.title }}
+</div>

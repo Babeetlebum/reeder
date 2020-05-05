@@ -17,10 +17,10 @@
       "@app/*": ["src/app/*"],
       "@store/*": ["src/app/store/*"],
       "@auth/*": ["src/app/modules/auth/*"],
+      "@choose/*": ["src/app/modules/choose/*"],
       "@core/*": ["src/app/core/*"],
       "@layout/*": ["src/app/layout/*"],
-      "@shared/*": ["src/app/shared/*"],
-      "@store/*": ["src/app/store/*"]
+      "@shared/*": ["src/app/shared/*"]
     }
   },
   "angularCompilerOptions": {

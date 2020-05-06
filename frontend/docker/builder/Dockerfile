@@ -3,7 +3,7 @@ FROM node:10.18.0-alpine3.11
 LABEL name="builder" version="0.0.1"
 
 # Install utils
-RUN apk add --no-cache bash git
+RUN apk add --no-cache bash git chromium
 
 # Create default user
 # ARG USER_ID

@@ -1,8 +1,7 @@
 version: '3'
 services:
   frontend-builder:
-    build:
-      context: builder/.
+    image: docker.pkg.github.com/babeetlebum/reeder/reeder_frontend-builder:1.0.0
     volumes:
       - ../..:/app
     working_dir: /app/frontend

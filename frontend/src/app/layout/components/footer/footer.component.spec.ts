@@ -6,7 +6,7 @@ import { FooterComponent } from './footer.component';
 import { ThemeService } from '@shared/services';
 import { MaterialModule } from '@shared/material.module';
 
-fdescribe('FooterComponent', () => {
+describe('FooterComponent', () => {
   let component: FooterComponent;
   let fixture: ComponentFixture<FooterComponent>;
   let debugElement: DebugElement;

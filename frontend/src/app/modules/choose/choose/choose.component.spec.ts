@@ -1,4 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideMockStore } from '@ngrx/store/testing';
+
+import { MaterialModule } from '@shared/material.module';
+import * as fromChoose from '@choose/store/choose.reducers';
 
 import { ChooseComponent } from './choose.component';
 
@@ -8,9 +12,10 @@ describe('ChooseComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChooseComponent ]
-    })
-    .compileComponents();
+      declarations: [ChooseComponent],
+      imports: [MaterialModule],
+      providers: [provideMockStore({ initialState: { choose: fromChoose.initialState } })],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

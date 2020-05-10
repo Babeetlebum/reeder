@@ -8,6 +8,7 @@ export interface IBook {
   bookshelves: string[];
   languages: string[];
   downloadCount: number;
+  coverUrl: string;
 }
 
 export class Book implements IBook {
@@ -18,6 +19,7 @@ export class Book implements IBook {
   bookshelves: string[];
   languages: string[];
   downloadCount: number;
+  coverUrl: string;
 
   public constructor(bookConfig: IBook) {
     this.id = bookConfig.id;
@@ -27,5 +29,6 @@ export class Book implements IBook {
     this.bookshelves = bookConfig.bookshelves;
     this.languages = bookConfig.languages;
     this.downloadCount = bookConfig.downloadCount;
+    this.coverUrl = bookConfig.coverUrl;
   }
 }

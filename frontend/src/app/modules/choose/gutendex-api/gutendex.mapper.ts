@@ -23,6 +23,7 @@ export class GutendexMapper {
       bookshelves: gutendexItem.bookshelves,
       languages: gutendexItem.languages,
       downloadCount: gutendexItem.download_count,
+      coverUrl: gutendexItem.formats['image/jpeg'],
     });
   };
 }

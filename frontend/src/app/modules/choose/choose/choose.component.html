@@ -3,8 +3,20 @@ choose works !
 <button (click)="getBooks()">Get books</button>
 
 <mat-spinner [style.visibility]="(bookListLoading$ | async) ? 'visible' : 'hidden'" [diameter]="40"></mat-spinner>
-<!-- <mat-spinner [diameter]="40"></mat-spinner> -->
 
-<div *ngFor="let book of bookList$ | async">
-  {{ book.title }}
+<div class="books flex flex-wrap">
+  <mat-card class="book flex flex-col w-1/2" *ngFor="let book of bookList$ | async">
+    <mat-card-header>
+      <mat-card-title class="book__title leading-8 h-16">{{ book.title }}</mat-card-title>
+      <mat-card-subtitle>{{ book.authors[0].name }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="book__body flex">
+        <div class="book__body__cover flex justify-center">
+          <img class="object-contain w-full h-full" [src]="book.coverUrl" />
+        </div>
+        <div class="book__body__summary ml-4">{{ book.title }}</div>
+      </div>
+    </mat-card-content>
+  </mat-card>
 </div>

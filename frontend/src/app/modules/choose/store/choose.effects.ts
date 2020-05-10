@@ -15,13 +15,7 @@ import {
 @Injectable()
 export class ChooseEffects {
   // clicking the "get booklist" button call the gutendex getBook action
-  getBooks$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(getBooks),
-      tap(() => console.log('action get books detected')),
-      mapTo(gutendexServiceGetBooks()),
-    ),
-  );
+  getBooks$ = createEffect(() => this.actions$.pipe(ofType(getBooks), mapTo(gutendexServiceGetBooks())));
 
   // Getting booklist action calls the gutendex repository
   getGutendexBooks$ = createEffect(() =>

@@ -24,7 +24,6 @@ export class ChooseComponent implements OnInit {
   }
 
   getBooks() {
-    console.log(`getting books`);
     this.store.dispatch(getBooks());
   }
 }

@@ -10,16 +10,17 @@ windows:
       panes:
         - p1:
             - cd frontend/docker
-            - clear
+            - cat github-public-token | docker login https://docker.pkg.github.com -u Babeetlebum --password-stdin
+            - yarn run docker:up
         - p2:
             - cd frontend
+            - sleep 20
             - yarn run docker:connect
-            - sleep 60
             - clear
         - p3:
             - cd frontend
+            - sleep 20
             - yarn run docker:connect
-            - sleep 60
             - clear
         - p4:
             - cd frontend

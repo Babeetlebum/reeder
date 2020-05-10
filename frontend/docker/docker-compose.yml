@@ -10,10 +10,9 @@ services:
       - 9876
     environment:
       - VIRTUAL_HOST=${COMPOSE_PROJECT_NAME}.local
+      - VIRTUAL_PORT=4200
     networks:
-      default_local:
-        aliases:
-          - ${COMPOSE_PROJECT_NAME}.local
+      - reverseproxy_default
 networks:
-  default_local:
+  reverseproxy_default:
     external: true

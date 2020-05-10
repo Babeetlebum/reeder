@@ -8,7 +8,7 @@ services:
             - ~/.m2:/home/user/.m2
         entrypoint: "tail -f /dev/null"
         networks:
-            - default_local
+            - reverseproxy_default
 
     server:
         build:
@@ -21,7 +21,7 @@ services:
             - VIRTUAL_HOST=${COMPOSE_PROJECT_NAME}.local
         entrypoint: "tail -f /dev/null"
         networks:
-            - default_local
+            - reverseproxy_default
 #   gutenberg:
 #         image: cwolff/gutenberg-http
     db:
@@ -34,7 +34,7 @@ services:
         environment:
             MYSQL_ROOT_PASSWORD: mysql
         networks:
-            - default_local
+            - reverseproxy_default
 
     phpmyadmin:
         image: phpmyadmin/phpmyadmin:latest
@@ -48,8 +48,8 @@ services:
         links:
             - db
         networks:
-            - default_local
+            - reverseproxy_default
 
 networks:
-    default_local:
+    reverseproxy_default:
         external: true

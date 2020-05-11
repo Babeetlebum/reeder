@@ -7,7 +7,7 @@ import { catchError, exhaustMap, map, tap } from 'rxjs/operators';
 
 import { DEFAULT_ROUTE } from '@app/app-routing.module';
 import { AuthService } from '@core/services';
-import { login, loginFailure, loginSuccess } from '@store/auth/auth.actions';
+import { login, loginFailure, loginSuccess } from './auth.actions';
 
 @Injectable()
 export class AuthEffects {

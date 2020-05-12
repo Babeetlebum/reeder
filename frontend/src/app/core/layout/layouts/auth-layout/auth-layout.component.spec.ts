@@ -8,7 +8,7 @@ import * as fromAuth from '@core/auth/store/auth.reducers';
 import { FooterComponent, NavToolbarComponent } from '@core/layout/components';
 import { MaterialModule } from '@shared/material.module';
 
-fdescribe('AuthLayoutComponent', () => {
+describe('AuthLayoutComponent', () => {
   let component: AuthLayoutComponent;
   let fixture: ComponentFixture<AuthLayoutComponent>;
 

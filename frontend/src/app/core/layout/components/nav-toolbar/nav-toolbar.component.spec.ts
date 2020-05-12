@@ -6,8 +6,8 @@ import { provideMockStore, MockStore } from '@ngrx/store/testing';
 
 import { NavToolbarComponent } from './nav-toolbar.component';
 import { MaterialModule } from '@shared/material.module';
-import * as fromAuth from '@auth/store/auth.reducers';
-import { selectConnectedUserName, selectIsUserConnected } from '@auth/store/auth.selectors';
+import * as fromAuth from '@core/auth/store/auth.reducers';
+import { selectConnectedUserName, selectIsUserConnected } from '@core/auth/store/auth.selectors';
 
 describe('NavToolbarComponent', () => {
   let debugElement: DebugElement;

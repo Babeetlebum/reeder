@@ -1,11 +1,14 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
-import { AuthService } from '@core/services';
+import { AuthModule } from '@core/auth/auth.module';
+import { LayoutModule } from '@core/layout/layout.module';
+
+import { AuthService } from '@core/auth/auth.service';
 
 @NgModule({
   declarations: [],
-  imports: [HttpClientModule],
+  imports: [AuthModule, HttpClientModule, LayoutModule],
   exports: [],
   providers: [AuthService],
 })

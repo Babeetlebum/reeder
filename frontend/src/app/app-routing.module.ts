@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AuthLayoutComponent, PageLayoutComponent } from '@layout/layouts/';
+import { AuthLayoutComponent, PageLayoutComponent } from '@core/layout/layouts/';
 
 export enum ROUTES {
   AUTH = 'auth',
@@ -18,7 +18,7 @@ const routes: Routes = [
   {
     path: ROUTES.AUTH,
     component: AuthLayoutComponent,
-    loadChildren: () => import('./modules/auth/auth.module').then((m) => m.AuthModule),
+    loadChildren: () => import('./core/auth/auth.module').then((m) => m.AuthModule),
   },
   {
     path: ROUTES.CHOOSE,

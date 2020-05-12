@@ -9,7 +9,6 @@ import { AppRoutingModule } from '@app/app-routing.module';
 import { AppComponent } from '@app/app.component';
 
 import { CoreModule } from '@core/core.module';
-import { LayoutModule } from '@layout/layout.module';
 import { SharedModule } from '@shared/shared.module';
 import { environment } from '../environments/environment';
 
@@ -21,7 +20,6 @@ import { environment } from '../environments/environment';
     SharedModule,
     BrowserModule,
     AppRoutingModule,
-    LayoutModule,
     StoreModule.forRoot(
       {},
       {

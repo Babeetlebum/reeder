@@ -6,7 +6,7 @@ import { of } from 'rxjs';
 import { catchError, exhaustMap, map, tap } from 'rxjs/operators';
 
 import { DEFAULT_ROUTE } from '@app/app-routing.module';
-import { AuthService } from '@core/services';
+import { AuthService } from '@core/auth/auth.service';
 import { login, loginFailure, loginSuccess } from './auth.actions';
 
 @Injectable()

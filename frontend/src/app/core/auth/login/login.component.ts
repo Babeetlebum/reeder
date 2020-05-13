@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 
 import { authModuleRoute, AuthRoute } from '@core/auth/auth-route';
 import * as AuthActions from '@core/auth/store/auth.actions';
-import * as fromRoot from '@core/auth/store/auth.reducers';
+import * as fromAuth from '@core/auth/store/auth.reducers';
 import { selectAuthLoading } from '@core/auth/store/auth.selectors';
 import { LoginCredentials, TEST_USER, TEST_PASSWORD } from '@store/models';
 const PASSWORD_VALIDATOR = [Validators.required, Validators.minLength(6)];
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   authLoading$: Observable<boolean>;
   hidePassword = true;
 
-  public constructor(private router: Router, private store: Store<fromRoot.State>) {}
+  public constructor(private router: Router, private store: Store<fromAuth.State>) {}
 
   ngOnInit() {
     this.authLoading$ = this.store.select(selectAuthLoading);

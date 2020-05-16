@@ -5,7 +5,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { ReadRoutingModule } from '@read/read-routing.module';
 import { ReadComponent } from '@read/read/read.component';
 import { ReadEffects } from '@read/store/read.effects';
-import { CHOOSE_STATE, reducer } from '@read/store/read.reducers';
+import { READ_STATE, reducer } from '@read/store/read.reducers';
 import { MaterialModule } from '@shared/material.module';
 
 @NgModule({
@@ -15,7 +15,7 @@ import { MaterialModule } from '@shared/material.module';
     ReadRoutingModule,
     EffectsModule.forFeature([ReadEffects]),
     MaterialModule,
-    StoreModule.forFeature(CHOOSE_STATE, reducer),
+    StoreModule.forFeature(READ_STATE, reducer),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

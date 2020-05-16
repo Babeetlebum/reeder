@@ -4,7 +4,7 @@ import * as ReadActions from './read.actions';
 
 import { Book } from '@store/models';
 
-export const CHOOSE_STATE = 'read';
+export const READ_STATE = 'read';
 
 export interface State {
   bookListLoading: boolean;
@@ -21,13 +21,13 @@ export const initialState: State = {
 const readReducer = createReducer(
   initialState,
   on(ReadActions.getBooks, (state) => ({ ...state, bookListLoading: true })),
-  on(ReadActions.gutendexServiceGetBooks, (state) => ({ ...state, bookList: [] })),
-  on(ReadActions.gutendexServiceGetBooksSuccess, (state, { bookList }) => ({
+  on(ReadActions.reederServiceGetBooks, (state) => ({ ...state, bookList: [] })),
+  on(ReadActions.reederServiceGetBooksSuccess, (state, { bookList }) => ({
     ...state,
     bookListLoading: false,
     bookList,
   })),
-  on(ReadActions.gutendexServiceGetBooksFailure, (state, { error }) => ({
+  on(ReadActions.reederServiceGetBooksFailure, (state, { error }) => ({
     ...state,
     bookListLoading: false,
     errorMessage: error.message,

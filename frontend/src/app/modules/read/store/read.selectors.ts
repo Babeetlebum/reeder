@@ -3,9 +3,9 @@ import { createFeatureSelector, createSelector, select } from '@ngrx/store';
 import { pipe } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
-import { CHOOSE_STATE, State } from '@read/store/read.reducers';
+import { READ_STATE, State } from '@read/store/read.reducers';
 
-export const selectRead = createFeatureSelector<State>(CHOOSE_STATE);
+export const selectRead = createFeatureSelector<State>(READ_STATE);
 
 export const selectBookList = createSelector(selectRead, (state) => state.bookList);
 export const selectBookListLoading = createSelector(selectRead, (state) => state.bookListLoading);

@@ -4,31 +4,31 @@ import { Actions, ofType, createEffect } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { catchError, exhaustMap, map, mapTo, tap } from 'rxjs/operators';
 
-import { GutendexRepository } from '@read/gutendex-api';
+import { ReederRepository } from '@read/reeder-api';
 import {
   getBooks,
-  gutendexServiceGetBooks,
-  gutendexServiceGetBooksFailure,
-  gutendexServiceGetBooksSuccess,
+  reederServiceGetBooks,
+  reederServiceGetBooksFailure,
+  reederServiceGetBooksSuccess,
 } from '@read/store/read.actions';
 
 @Injectable()
 export class ReadEffects {
-  // clicking the "get booklist" button call the gutendex getBook action
-  getBooks$ = createEffect(() => this.actions$.pipe(ofType(getBooks), mapTo(gutendexServiceGetBooks())));
+  // clicking the "get booklist" button call the reeder getBook action
+  getBooks$ = createEffect(() => this.actions$.pipe(ofType(getBooks), mapTo(reederServiceGetBooks())));
 
-  // Getting booklist action calls the gutendex repository
-  getGutendexBooks$ = createEffect(() =>
+  // Getting booklist action calls the reeder repository
+  getReederBooks$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(gutendexServiceGetBooks),
+      ofType(reederServiceGetBooks),
       exhaustMap(() =>
-        this.gutendexRepository.getPopularBooks().pipe(
-          map((bookList) => gutendexServiceGetBooksSuccess({ bookList })),
-          catchError((error) => of(gutendexServiceGetBooksFailure({ error }))),
+        this.reederRepository.getPopularBooks().pipe(
+          map((bookList) => reederServiceGetBooksSuccess({ bookList })),
+          catchError((error) => of(reederServiceGetBooksFailure({ error }))),
         ),
       ),
     ),
   );
 
-  public constructor(private actions$: Actions, private gutendexRepository: GutendexRepository) {}
+  public constructor(private actions$: Actions, private reederRepository: ReederRepository) {}
 }

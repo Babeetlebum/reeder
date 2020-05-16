@@ -9,7 +9,7 @@ import { LoginCredentials, TEST_USER, TEST_PASSWORD, User } from '@store/models'
 export class AuthService {
   login(credentials: LoginCredentials): Observable<{ user: User }> {
     // fake API for now
-    return timer(3000).pipe(
+    return timer(1000).pipe(
       map(() => {
         if (credentials.email !== TEST_USER.email || credentials.password !== TEST_PASSWORD) {
           throw new Error('Wrong credentials');

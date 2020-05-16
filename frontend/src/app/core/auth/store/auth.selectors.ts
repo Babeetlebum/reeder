@@ -3,7 +3,7 @@ import { createFeatureSelector, createSelector, select } from '@ngrx/store';
 import { pipe } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
-import { AUTH_STATE, State } from '@store/auth/auth.reducers';
+import { AUTH_STATE, State } from './auth.reducers';
 
 export const selectAuth = createFeatureSelector<State>(AUTH_STATE);
 

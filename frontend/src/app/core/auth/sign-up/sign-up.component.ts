@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { authModuleRoute, AuthRoute } from '@auth/auth-route';
+import { authModuleRoute, AuthRoute } from '@core/auth/auth-route';
 //
 // import { AuthService } from '../../services/index';
 //

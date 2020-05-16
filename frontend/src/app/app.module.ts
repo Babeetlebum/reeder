@@ -9,23 +9,19 @@ import { AppRoutingModule } from '@app/app-routing.module';
 import { AppComponent } from '@app/app.component';
 
 import { CoreModule } from '@core/core.module';
-import { LayoutModule } from '@layout/layout.module';
 import { SharedModule } from '@shared/shared.module';
-import { reducer } from '@store/reducers';
-import { AuthEffects } from '@store/effects';
 import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     CoreModule,
-    EffectsModule.forRoot([AuthEffects]),
+    EffectsModule.forRoot([]),
     SharedModule,
     BrowserModule,
     AppRoutingModule,
-    LayoutModule,
     StoreModule.forRoot(
-      { auth: reducer },
+      {},
       {
         runtimeChecks: {
           strictStateImmutability: true,

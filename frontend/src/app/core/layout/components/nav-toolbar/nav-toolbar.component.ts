@@ -4,9 +4,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 
-import * as fromAuth from '@store/reducers';
-import * as AuthActions from '@store/actions';
-import { selectConnectedUserName, selectHasErrorMessage, selectIsUserConnected } from '@store/selectors';
+import * as fromAuth from '@core/auth/store/auth.reducers';
+import * as AuthActions from '@core/auth/store/auth.actions';
+import { selectConnectedUserName, selectHasErrorMessage, selectIsUserConnected } from '@core/auth/store/auth.selectors';
 
 @Component({
   selector: 'reed-nav-toolbar',

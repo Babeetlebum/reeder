@@ -23,7 +23,7 @@
 
   <mat-card-actions class="flex flex-col items-center justify-center">
     <div class="py-3 sm:h-24 flex items-center">
-      <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid">
+      <button class="login-button" mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid">
         Login
       </button>
     </div>
@@ -32,7 +32,7 @@
     <mat-divider class="w-full"></mat-divider>
 
     <div class="py-3 sm:h-16 flex items-center">
-      <button mat-raised-button color="basic" type="button" (click)="goToSignUp()">
+      <button class="go-to-sign-up-button" mat-raised-button color="basic" type="button" (click)="goToSignUp()">
         Don't have an account yet ? Create one !
       </button>
     </div>

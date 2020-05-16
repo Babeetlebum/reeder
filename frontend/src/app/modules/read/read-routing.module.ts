@@ -4,13 +4,13 @@ import { ReadComponent } from './read/read.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: ':bookId',
     component: ReadComponent,
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class ReadRoutingModule { }
+export class ReadRoutingModule {}

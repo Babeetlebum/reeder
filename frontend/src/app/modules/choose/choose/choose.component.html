@@ -15,7 +15,12 @@ choose works !
         <div class="book__body__cover flex justify-center">
           <img class="object-contain w-full h-full" [src]="book.coverUrl" />
         </div>
-        <div class="book__body__summary ml-4">{{ book.title }}</div>
+        <div class="book__body__content flex flex-col w-full justify-between">
+          <div class="book__body__summary ml-4">{{ book.title }}</div>
+          <button class="self-center" mat-flat-button color="primary" (click)="readBook(book.id)">
+            Read this book
+          </button>
+        </div>
       </div>
     </mat-card-content>
   </mat-card>

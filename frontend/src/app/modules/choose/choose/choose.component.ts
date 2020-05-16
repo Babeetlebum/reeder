@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import * as fromChoose from '@choose/store/choose.reducers';
 import { selectBookList, selectBookListLoading } from '@choose/store/choose.selectors';
-import { getBooks } from '@choose/store/choose.actions';
+import { getBooks, readBook } from '@choose/store/choose.actions';
 import { Book } from '@store/models';
 
 @Component({
@@ -25,5 +25,9 @@ export class ChooseComponent implements OnInit {
 
   getBooks() {
     this.store.dispatch(getBooks());
+  }
+
+  readBook(bookId: number) {
+    this.store.dispatch(readBook({ bookId }));
   }
 }

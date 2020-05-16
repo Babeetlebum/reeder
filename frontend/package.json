@@ -9,7 +9,7 @@
     "docker:up": "COMPOSE_PROJECT_NAME=reeder docker-compose -f docker/docker-compose.yml up --build",
     "docker:build": "COMPOSE_PROJECT_NAME=reeder docker-compose -f docker/docker-compose.yml build",
     "docker:connect": "docker exec -ti reeder_frontend-builder_1 /bin/bash",
-    "dev": "ng serve --host 0.0.0.0 --disableHostCheck true --poll 5000",
+    "dev": "ng serve --host 0.0.0.0 --disableHostCheck true --poll 1000",
     "prod": "ng build",
     "ng": "ng",
     "start": "ng serve",

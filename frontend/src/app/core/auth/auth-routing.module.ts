@@ -19,10 +19,6 @@ const routes: Routes = [
     path: AuthRoute.SIGNUP,
     component: SignUpComponent,
   },
-  {
-    path: '**',
-    redirectTo: 'login',
-  },
 ];
 
 @NgModule({

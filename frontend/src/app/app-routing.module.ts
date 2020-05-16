@@ -6,6 +6,7 @@ import { AuthLayoutComponent, PageLayoutComponent } from '@layout/layouts/';
 export enum ROUTES {
   AUTH = 'auth',
   CHOOSE = 'choose',
+  READ = 'read',
 }
 export const DEFAULT_ROUTE = ROUTES.CHOOSE;
 
@@ -24,6 +25,11 @@ const routes: Routes = [
     path: ROUTES.CHOOSE,
     component: PageLayoutComponent,
     loadChildren: () => import('./modules/choose/choose.module').then((m) => m.ChooseModule),
+  },
+  {
+    path: ROUTES.READ,
+    component: PageLayoutComponent,
+    loadChildren: () => import('./modules/read/read.module').then((m) => m.ReadModule),
   },
   {
     path: '**',

@@ -1,1 +1,13 @@
-read works : {{ bookId$ | async }} !
+read works !
+
+<mat-spinner [style.visibility]="(bookContentLoading$ | async) ? 'visible' : 'hidden'" [diameter]="40"></mat-spinner>
+
+<article *ngIf="bookContent$ | async as bookContent">
+  <h1>
+    {{ bookContent.title }}
+  </h1>
+
+  <p *ngFor="let paragraph of bookContent.paragraphs">
+    {{ paragraph.content }}
+  </p>
+</article>

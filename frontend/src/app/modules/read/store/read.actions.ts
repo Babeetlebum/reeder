@@ -1,15 +1,15 @@
 import { createAction, props } from '@ngrx/store';
 
-import { Book } from '@store/models';
+import { BookContent } from './read.entities';
 
-export const getBooks = createAction('[Read Component] Get Books List');
+export const getBook = createAction('[Read Component] Get Book From Route', props<{ bookId: number }>());
 
-export const reederServiceGetBooks = createAction('[Reeder Service] Get Books List');
-export const reederServiceGetBooksSuccess = createAction(
-  '[Reeder Service] Get Books List - Success',
-  props<{ bookList: Book[] }>(),
+export const reederServiceGetBook = createAction('[Reeder Service] Get Book', props<{ bookId: number }>());
+export const reederServiceGetBookSuccess = createAction(
+  '[Reeder Service] Get Books - Success',
+  props<{ bookContent: BookContent }>(),
 );
-export const reederServiceGetBooksFailure = createAction(
-  '[Reeder Service] Get Books List - Failure',
+export const reederServiceGetBookFailure = createAction(
+  '[Reeder Service] Get Books - Failure',
   props<{ error: Error }>(),
 );

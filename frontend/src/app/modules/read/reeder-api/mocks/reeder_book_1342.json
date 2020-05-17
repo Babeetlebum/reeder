@@ -1,0 +1,62 @@
+{
+  "id": 1,
+  "externalId": 1342,
+  "title": "Pride and Prejudice",
+  "paragraphs": [
+    {
+      "id": 10,
+      "delta": 1,
+      "content": "Chapter 1"
+    },
+    {
+      "id": 11,
+      "delta": 2,
+      "content": "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife."
+    },
+    {
+      "id": 12,
+      "delta": 3,
+      "content": "However little known the feelings or views of such a man may be on his first entering a neighbourhood, this truth is so well fixed in the minds of the surrounding families, that he is considered the rightful property of some one or other of their daughters."
+    },
+    {
+      "id": 13,
+      "delta": 4,
+      "content": "“My dear Mr. Bennet,” said his lady to him one day, “have you heard that Netherfield Park is let at last?”"
+    },
+    {
+      "id": 14,
+      "delta": 5,
+      "content": "Mr. Bennet replied that he had not."
+    },
+    {
+      "id": 15,
+      "delta": 6,
+      "content": "“But it is,” returned she; “for Mrs. Long has just been here, and she told me all about it.”"
+    },
+    {
+      "id": 16,
+      "delta": 7,
+      "content": "Mr. Bennet made no answer."
+    },
+    {
+      "id": 17,
+      "delta": 8,
+      "content": "“Do you not want to know who has taken it?” cried his wife impatiently."
+    },
+    {
+      "id": 18,
+      "delta": 9,
+      "content": "“You want to tell me, and I have no objection to hearing it.”"
+    },
+    {
+      "id": 19,
+      "delta": 10,
+      "content": "This was invitation enough."
+    },
+    {
+      "id": 20,
+      "delta": 11,
+      "content": "“Why, my dear, you must know, Mrs. Long says that Netherfield is taken by a young man of large fortune from the north of England; that he came down on Monday in a chaise and four to see the place, and was so much delighted with it, that he agreed with Mr. Morris immediately; that he is to take possession before Michaelmas, and some of his servants are to be in the house by the end of next week.”"
+    }
+  ]
+}

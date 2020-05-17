@@ -1,35 +1,34 @@
 import { Action, createReducer, on } from '@ngrx/store';
 
 import * as ReadActions from './read.actions';
-
-import { Book } from '@store/models';
+import { BookContent } from './read.entities';
 
 export const READ_STATE = 'read';
 
 export interface State {
-  bookListLoading: boolean;
-  bookList: Book[];
+  bookContentLoading: boolean;
+  bookContent: BookContent;
   errorMessage: string;
 }
 
 export const initialState: State = {
-  bookListLoading: false,
-  bookList: [],
+  bookContentLoading: false,
+  bookContent: null,
   errorMessage: null,
 };
 
 const readReducer = createReducer(
   initialState,
-  on(ReadActions.getBooks, (state) => ({ ...state, bookListLoading: true })),
-  on(ReadActions.reederServiceGetBooks, (state) => ({ ...state, bookList: [] })),
-  on(ReadActions.reederServiceGetBooksSuccess, (state, { bookList }) => ({
+  on(ReadActions.getBook, (state) => ({ ...state, bookContentLoading: true })),
+  on(ReadActions.reederServiceGetBook, (state) => ({ ...state })),
+  on(ReadActions.reederServiceGetBookSuccess, (state, { bookContent }) => ({
     ...state,
-    bookListLoading: false,
-    bookList,
+    bookContentLoading: false,
+    bookContent,
   })),
-  on(ReadActions.reederServiceGetBooksFailure, (state, { error }) => ({
+  on(ReadActions.reederServiceGetBookFailure, (state, { error }) => ({
     ...state,
-    bookListLoading: false,
+    bookContentLoading: false,
     errorMessage: error.message,
   })),
 );

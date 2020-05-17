@@ -2,29 +2,34 @@ import { Injectable } from '@angular/core';
 
 import { Actions, ofType, createEffect } from '@ngrx/effects';
 import { of } from 'rxjs';
-import { catchError, exhaustMap, map, mapTo, tap } from 'rxjs/operators';
+import { catchError, exhaustMap, map } from 'rxjs/operators';
 
 import { ReederRepository } from '@read/reeder-api';
 import {
-  getBooks,
-  reederServiceGetBooks,
-  reederServiceGetBooksFailure,
-  reederServiceGetBooksSuccess,
+  getBook,
+  reederServiceGetBook,
+  reederServiceGetBookFailure,
+  reederServiceGetBookSuccess,
 } from '@read/store/read.actions';
 
 @Injectable()
 export class ReadEffects {
-  // clicking the "get booklist" button call the reeder getBook action
-  getBooks$ = createEffect(() => this.actions$.pipe(ofType(getBooks), mapTo(reederServiceGetBooks())));
+  // clicking the "get book" button call the reeder getBook action
+  getBook$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(getBook),
+      map((props) => reederServiceGetBook(props)),
+    ),
+  );
 
-  // Getting booklist action calls the reeder repository
+  // Getting book action calls the reeder repository
   getReederBooks$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(reederServiceGetBooks),
-      exhaustMap(() =>
-        this.reederRepository.getPopularBooks().pipe(
-          map((bookList) => reederServiceGetBooksSuccess({ bookList })),
-          catchError((error) => of(reederServiceGetBooksFailure({ error }))),
+      ofType(reederServiceGetBook),
+      exhaustMap(({ bookId }) =>
+        this.reederRepository.getBook(bookId).pipe(
+          map((bookContent) => reederServiceGetBookSuccess({ bookContent })),
+          catchError((error) => of(reederServiceGetBookFailure({ error }))),
         ),
       ),
     ),

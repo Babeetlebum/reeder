@@ -1,7 +1,4 @@
 <mat-toolbar color="primary" class="flex justify-center">
-  <button class="px-2" mat-icon-button routerLink="/home" routerLinkActive="active" matTooltip="Home">
-    <mat-icon aria-hidden="true" color="secondary">whatshot</mat-icon>
-  </button>
 
 
   <div class="flex-grow"></div>
@@ -16,7 +13,7 @@
       class="disconnect px-2"
       (click)="logout()"
       mat-icon-button
-      routerLink="/login"
+      [routerLink]="AuthRoute.LOGIN"
       routerLinkActive="active"
       matTooltip="Disconnect"
     >

@@ -8,6 +8,8 @@ import * as fromAuth from '@core/auth/store/auth.reducers';
 import * as AuthActions from '@core/auth/store/auth.actions';
 import { selectConnectedUserName, selectHasErrorMessage, selectIsUserConnected } from '@core/auth/store/auth.selectors';
 
+import { AuthRoute } from '@core/auth/auth-route';
+
 @Component({
   selector: 'reed-nav-toolbar',
   styleUrls: ['./nav-toolbar.component.scss'],
@@ -17,6 +19,7 @@ export class NavToolbarComponent implements OnDestroy, OnInit {
   isUserConnected$: Observable<boolean>;
   connectedUserName$: Observable<string>;
   errorMessageSubscription: Subscription;
+  AuthRoute = AuthRoute;
 
   constructor(private store: Store<fromAuth.State>, private snackBar: MatSnackBar) {}
 

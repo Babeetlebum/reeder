@@ -11,6 +11,7 @@ import {
   reederServiceGetBookFailure,
   reederServiceGetBookSuccess,
 } from '@read/store/read.actions';
+import { setPageTitle } from '@core/layout/store/layout.actions';
 
 @Injectable()
 export class ReadEffects {
@@ -32,6 +33,14 @@ export class ReadEffects {
           catchError((error) => of(reederServiceGetBookFailure({ error }))),
         ),
       ),
+    ),
+  );
+
+  // Successfuly getting a book updates the page title
+  getReederBookSuccessfuly = createEffect(() =>
+    this.actions$.pipe(
+      ofType(reederServiceGetBookSuccess),
+      map(({ bookContent }) => setPageTitle({ pageTitle: bookContent.title })),
     ),
   );
 

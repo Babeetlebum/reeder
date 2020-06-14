@@ -13,7 +13,7 @@ import {
   gutendexServiceGetBooksFailure,
   gutendexServiceGetBooksSuccess,
 } from '@choose/store/choose.actions';
-import { ROUTES } from '@app/app-routing.module';
+import { AppRoutes } from '@app/routes';
 
 @Injectable()
 export class ChooseEffects {
@@ -38,7 +38,7 @@ export class ChooseEffects {
     () =>
       this.actions$.pipe(
         ofType(readBook),
-        tap((action) => this.router.navigateByUrl(`${ROUTES.READ}/${action.bookId}`)),
+        tap((action) => this.router.navigateByUrl(`${AppRoutes.READ}/${action.bookId}`)),
       ),
     { dispatch: false },
   );

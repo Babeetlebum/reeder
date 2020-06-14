@@ -3,11 +3,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 
-import { ROUTES } from '@app/app-routing.module';
+import { AppRoutes } from '@app/routes';
 import * as AuthActions from '@core/auth/store/auth.actions';
 import { selectConnectedUserName, selectHasErrorMessage, selectIsUserConnected } from '@core/auth/store/auth.selectors';
 import { selectPageTitle } from '@core/layout/store/layout.selectors';
-import { AuthRoute } from '@core/auth/auth-route';
 
 @Component({
   selector: 'reed-nav-toolbar',
@@ -19,8 +18,7 @@ export class NavToolbarComponent implements OnDestroy, OnInit {
   connectedUserName$: Observable<string>;
   errorMessageSubscription: Subscription;
   pageTitle$: Observable<string>;
-  AuthRoute = AuthRoute;
-  ROUTES = ROUTES;
+  AppRoutes = AppRoutes;
 
   constructor(private store: Store<{}>, private snackBar: MatSnackBar) {}
 

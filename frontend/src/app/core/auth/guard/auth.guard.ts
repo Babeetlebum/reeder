@@ -3,8 +3,8 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Rout
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { AuthRoute } from '@core/auth/auth-route';
 
+import { AppRoutes } from '@app/routes';
 import * as fromAuth from '@core/auth/store/auth.reducers';
 import { selectIsUserConnected } from '@core/auth/store/auth.selectors';
 
@@ -23,7 +23,7 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot,
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return this.isUserConnected$.pipe(
-      map((isUserConnected) => (isUserConnected ? true : this.router.parseUrl(AuthRoute.LOGIN))),
+      map((isUserConnected) => (isUserConnected ? true : this.router.parseUrl(`/${AppRoutes.LOGIN}`))),
     );
   }
 }

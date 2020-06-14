@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { authModuleRoute, AuthRoute } from '@core/auth/auth-route';
+import { AppRoutes } from '@app/routes';
 import * as AuthActions from '@core/auth/store/auth.actions';
 import * as fromAuth from '@core/auth/store/auth.reducers';
 import { selectAuthLoading } from '@core/auth/store/auth.selectors';
@@ -40,6 +40,6 @@ export class LoginComponent implements OnInit {
   }
 
   public goToSignUp() {
-    this.router.navigateByUrl(`${authModuleRoute}/${AuthRoute.SIGNUP}`);
+    this.router.navigateByUrl(`${AppRoutes.SIGNUP}`);
   }
 }

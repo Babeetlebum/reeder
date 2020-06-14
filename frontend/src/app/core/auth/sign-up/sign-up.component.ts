@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { authModuleRoute, AuthRoute } from '@core/auth/auth-route';
+import { AppRoutes } from '@app/routes';
 //
 // import { AuthService } from '../../services/index';
 //
@@ -30,7 +30,7 @@ export class SignUpComponent {
   public constructor(private router: Router) {}
 
   public goToLogin() {
-    this.router.navigateByUrl(`${authModuleRoute}/${AuthRoute.LOGIN}`);
+    this.router.navigateByUrl(`${AppRoutes.LOGIN}`);
   }
   // protected redirectUrl: string = '/';
   //

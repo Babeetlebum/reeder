@@ -1,4 +1,13 @@
 <mat-toolbar color="primary" class="flex justify-center">
+  <button
+    *ngIf="isUserConnected$ | async"
+    [routerLink]="'/' + ROUTES.CHOOSE"
+    routerLinkActive="active"
+    class="px-2"
+    mat-button
+  >
+    List of books
+  </button>
 
   <button *ngIf="pageTitle$ | async" class="px-2" mat-button>{{ pageTitle$ | async }}</button>
 

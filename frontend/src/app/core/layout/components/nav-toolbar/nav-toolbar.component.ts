@@ -3,6 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 
+import { ROUTES } from '@app/app-routing.module';
 import * as AuthActions from '@core/auth/store/auth.actions';
 import { selectConnectedUserName, selectHasErrorMessage, selectIsUserConnected } from '@core/auth/store/auth.selectors';
 import { selectPageTitle } from '@core/layout/store/layout.selectors';
@@ -19,6 +20,7 @@ export class NavToolbarComponent implements OnDestroy, OnInit {
   errorMessageSubscription: Subscription;
   pageTitle$: Observable<string>;
   AuthRoute = AuthRoute;
+  ROUTES = ROUTES;
 
   constructor(private store: Store<{}>, private snackBar: MatSnackBar) {}
 

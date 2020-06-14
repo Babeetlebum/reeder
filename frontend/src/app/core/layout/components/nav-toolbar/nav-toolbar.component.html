@@ -9,7 +9,9 @@
     List of books
   </button>
 
-  <button *ngIf="pageTitle$ | async" class="px-2" mat-button>{{ pageTitle$ | async }}</button>
+  <button *ngIf="(isUserConnected$ | async) && (pageTitle$ | async)" class="px-2" mat-button>
+    {{ pageTitle$ | async }}
+  </button>
 
   <div class="flex-grow"></div>
 

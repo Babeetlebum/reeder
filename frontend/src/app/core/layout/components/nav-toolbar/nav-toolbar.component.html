@@ -3,11 +3,11 @@
     <mat-icon aria-hidden="true" color="secondary">whatshot</mat-icon>
   </button>
 
-  <button class="connected-user-name px-2" mat-button>{{ connectedUserName$ | async }}</button>
 
   <div class="flex-grow"></div>
 
   <ng-template [ngIf]="isUserConnected$ | async">
+    <button class="connected-user-name" mat-button>{{ connectedUserName$ | async }}</button>
     <button class="px-2" mat-icon-button routerLink="/profile" routerLinkActive="active" matTooltip="Profile">
       <mat-icon>account_circle</mat-icon>
     </button>

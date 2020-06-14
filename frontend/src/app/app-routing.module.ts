@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AuthLayoutComponent, PageLayoutComponent } from '@core/layout/layouts/';
+import { AuthGuard } from '@core/auth/guard/auth.guard';
 
 export enum ROUTES {
   AUTH = 'auth',
@@ -25,11 +26,13 @@ const routes: Routes = [
     path: ROUTES.CHOOSE,
     component: PageLayoutComponent,
     loadChildren: () => import('./modules/choose/choose.module').then((m) => m.ChooseModule),
+    canActivate: [AuthGuard],
   },
   {
     path: ROUTES.READ,
     component: PageLayoutComponent,
     loadChildren: () => import('./modules/read/read.module').then((m) => m.ReadModule),
+    canActivate: [AuthGuard],
   },
   {
     path: '**',

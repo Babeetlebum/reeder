@@ -1,5 +1,6 @@
 <mat-toolbar color="primary" class="flex justify-center">
 
+  <button *ngIf="pageTitle$ | async" class="px-2" mat-button>{{ pageTitle$ | async }}</button>
 
   <div class="flex-grow"></div>
 

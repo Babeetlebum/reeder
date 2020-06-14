@@ -21,6 +21,7 @@ export class ChooseComponent implements OnInit {
   ngOnInit() {
     this.bookList$ = this.store.select(selectBookList);
     this.bookListLoading$ = this.store.select(selectBookListLoading);
+    this.getBooks();
   }
 
   getBooks() {

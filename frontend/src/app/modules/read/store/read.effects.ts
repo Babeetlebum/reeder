@@ -15,7 +15,7 @@ import { setPageTitle } from '@core/layout/store/layout.actions';
 
 @Injectable()
 export class ReadEffects {
-  // clicking the "get book" button call the reeder getBook action
+  // clicking a "get book" button calls the reeder getBook action
   getBook$ = createEffect(() =>
     this.actions$.pipe(
       ofType(getBook),

@@ -23,7 +23,7 @@
       class="disconnect px-2"
       (click)="logout()"
       mat-icon-button
-      [routerLink]="AuthRoute.LOGIN"
+      [routerLink]="'/' ROUTES.AUTH + '/' + AuthRoute.LOGIN"
       routerLinkActive="active"
       matTooltip="Disconnect"
     >

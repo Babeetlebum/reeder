@@ -24,7 +24,7 @@ describe('AppComponent', () => {
   it(`should have as title '${APP_TITLE}'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    const titleService = TestBed.get(Title);
+    const titleService = TestBed.inject(Title);
     expect(titleService.getTitle()).toEqual(APP_TITLE);
   });
 
@@ -37,7 +37,7 @@ describe('AppComponent', () => {
 
   it('should apply DARK theme', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    const themeService = TestBed.get(ThemeService);
+    const themeService = TestBed.inject(ThemeService);
     themeService.theme$ = of(Theme.DARK);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;

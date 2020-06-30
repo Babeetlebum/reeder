@@ -24,7 +24,7 @@ describe('NavToolbarComponent', () => {
 
     fixture = TestBed.createComponent(NavToolbarComponent);
     debugElement = fixture.debugElement;
-    mockStore = TestBed.get(Store);
+    mockStore = TestBed.inject(Store);
     fixture.detectChanges();
   }));
 

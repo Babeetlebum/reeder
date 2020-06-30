@@ -36,7 +36,7 @@ describe('ReadComponent', () => {
     debugElement = fixture.debugElement;
     component = fixture.componentInstance;
     fixture.detectChanges();
-    mockStore = TestBed.get(MockStore);
+    mockStore = TestBed.inject(MockStore);
   });
 
   it('should create', () => {
@@ -83,7 +83,7 @@ describe('ReadComponent', () => {
       mockStore.setState({
         ...initialState,
         // use the ngrx/entities adapter to generate the mock entities
-        paragraphs: fromParagraphs.adapter.addAll(mockParagraphs, { ...fromParagraphs.initialState }),
+        paragraphs: fromParagraphs.adapter.setAll(mockParagraphs, { ...fromParagraphs.initialState }),
       });
       fixture.detectChanges();
 

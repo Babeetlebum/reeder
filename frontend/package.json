@@ -59,6 +59,7 @@
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
+    "ng-mocks": "^9.6.3",
     "postcss-easy-import": "^3.0.0",
     "postcss-loader": "^3.0.0",
     "postcss-scss": "^2.0.0",

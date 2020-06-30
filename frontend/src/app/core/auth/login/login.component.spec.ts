@@ -4,114 +4,139 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
+import { Router } from '@angular/router';
 import { Store, StoreModule } from '@ngrx/store';
+import { MockStore, provideMockStore } from '@ngrx/store/testing';
+import { MockDeclaration } from 'ng-mocks';
 
 import { LoginComponent } from './login.component';
+import { SignUpComponent } from '../sign-up/sign-up.component';
 import * as fromAuth from '@core/auth/store/auth.reducers';
 import * as AuthActions from '@core/auth/store/auth.actions';
 import { MaterialModule } from '@shared/material.module';
+import { authModuleRoute, AuthRoute } from '@core/auth/auth-route';
 
-fdescribe('LoginComponent', () => {
+describe('LoginComponent', () => {
   let fixture: ComponentFixture<LoginComponent>;
   let component: LoginComponent;
   let debugElement: DebugElement;
   let store: Store<fromAuth.State>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [LoginComponent],
-      imports: [
-        BrowserAnimationsModule,
-        MaterialModule,
-        ReactiveFormsModule,
-        RouterTestingModule,
-        StoreModule.forRoot({ auth: fromAuth.reducer }),
-      ],
-      providers: [],
-    }).compileComponents();
-  }));
+  describe('Integration testing', () => {
+    beforeEach(async () => {
+      await TestBed.configureTestingModule({
+        declarations: [LoginComponent, MockDeclaration(SignUpComponent)],
+        imports: [
+          BrowserAnimationsModule,
+          MaterialModule,
+          ReactiveFormsModule,
+          RouterTestingModule.withRoutes([]),
+          StoreModule.forRoot({ auth: fromAuth.reducer }),
+        ],
+        providers: [],
+      }).compileComponents();
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(LoginComponent);
-    component = fixture.componentInstance;
-    debugElement = fixture.debugElement;
-    store = TestBed.get(Store);
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
-  describe('when clicking the login button', () => {
-    let buttonElement: DebugElement;
-    const expectedEmail = 'email@test.com';
-    const expectedPassword = 'testpassword';
-
-    beforeEach(async(() => {
-      spyOn(component, 'login').and.callThrough();
-      spyOn(store, 'dispatch').and.callThrough();
-      buttonElement = debugElement.query(By.css('.login-button'));
-    }));
-
-    it(`should call the login method`, () => {
-      buttonElement.nativeElement.click();
+      fixture = TestBed.createComponent(LoginComponent);
+      component = fixture.componentInstance;
+      debugElement = fixture.debugElement;
+      store = TestBed.get(Store);
       fixture.detectChanges();
-      expect(component.login).toHaveBeenCalled();
     });
 
-    it(`should call the login method with credentials`, () => {
-      component.loginForm.controls.email.setValue(expectedEmail);
-      component.loginForm.controls.password.setValue(expectedPassword);
-      buttonElement.nativeElement.click();
-      fixture.detectChanges();
-      expect(component.login).toHaveBeenCalledWith({
-        email: expectedEmail,
-        password: expectedPassword,
+    it('should create', () => {
+      expect(component).toBeTruthy();
+    });
+
+    describe('when clicking the login button', () => {
+      let buttonElement: DebugElement;
+      const expectedEmail = 'email@test.com';
+      const expectedPassword = 'testpassword';
+
+      beforeEach(async(() => {
+        spyOn(component, 'login').and.callThrough();
+        spyOn(store, 'dispatch').and.callThrough();
+        buttonElement = debugElement.query(By.css('.login-button'));
+      }));
+
+      it(`should call the login method`, () => {
+        buttonElement.nativeElement.click();
+        fixture.detectChanges();
+        expect(component.login).toHaveBeenCalled();
+      });
+
+      it(`should call the login method with credentials`, () => {
+        component.loginForm.controls.email.setValue(expectedEmail);
+        component.loginForm.controls.password.setValue(expectedPassword);
+        buttonElement.nativeElement.click();
+        fixture.detectChanges();
+        expect(component.login).toHaveBeenCalledWith({
+          email: expectedEmail,
+          password: expectedPassword,
+        });
+      });
+
+      it(`should dispatch a login action`, () => {
+        component.login({
+          email: expectedEmail,
+          password: expectedPassword,
+        });
+        fixture.detectChanges();
+        expect(store.dispatch).toHaveBeenCalledWith(
+          AuthActions.login({
+            credentials: {
+              email: expectedEmail,
+              password: expectedPassword,
+            },
+          }),
+        );
       });
     });
 
-    it(`should dispatch a login action`, () => {
-      component.login({
-        email: expectedEmail,
-        password: expectedPassword,
+    describe('when clicking the signup button', () => {
+      it(`should redirect to the signup page`, () => {
+        const router = TestBed.get(Router);
+        spyOn(router, 'navigateByUrl');
+        const buttonElement = debugElement.query(By.css('.go-to-sign-up-button'));
+        buttonElement.nativeElement.click();
+        fixture.detectChanges();
+
+        expect(router.navigateByUrl).toHaveBeenCalledWith(`${authModuleRoute}/${AuthRoute.SIGNUP}`);
       });
-      fixture.detectChanges();
-      expect(store.dispatch).toHaveBeenCalledWith(
-        AuthActions.login({
-          credentials: {
-            email: expectedEmail,
-            password: expectedPassword,
-          },
-        }),
-      );
     });
   });
 
-  // describe('when loading', () => {
-  //   beforeEach(async(() => {
-  //     store.setState({
-  //
-  //     })
-  //   }));
-  //
-  //   it(`should display a spinner`, () => {
-  //     const spinnerElement = expect(debugElement.query(By.css('mat-spinner'))).toBeTruthy();
-  //   });
-  // });
+  describe('State testing', () => {
+    let mockStore: MockStore<{ auth: fromAuth.State }>;
 
-  // describe('when clicking the signup button', () => {
-  //   let buttonElement: DebugElement;
-  //   beforeEach(async(() => {
-  //     buttonElement = debugElement.query(By.css('.go-to-sign-up-button'));
-  //   }));
-  //
-  //   it(`should call the goToSignup method`, () => {
-  //     expect(debugElement.query(By.css('.connected-user-name')).nativeElement.innerText).toContain('John');
-  //   });
-  //
-  //   it(`should redirect to the signup page`, () => {
-  //     expect(debugElement.query(By.css('.disconnect'))).toBeTruthy();
-  //   });
-  // });
+    beforeEach(async () => {
+      await TestBed.configureTestingModule({
+        declarations: [LoginComponent],
+        imports: [BrowserAnimationsModule, MaterialModule, ReactiveFormsModule, RouterTestingModule],
+        providers: [MockStore, provideMockStore({ initialState: { auth: fromAuth.initialState } })],
+      }).compileComponents();
+
+      fixture = TestBed.createComponent(LoginComponent);
+      component = fixture.componentInstance;
+      debugElement = fixture.debugElement;
+      mockStore = TestBed.get(MockStore);
+    });
+
+    describe('when auth is loading', () => {
+      it(`should display a spinner`, () => {
+        mockStore.setState({ auth: { ...fromAuth.initialState, authLoading: true } });
+        fixture.detectChanges();
+        const spinnerElement = debugElement.query(By.css('mat-spinner'));
+        expect(spinnerElement.styles.visibility).toBe('visible');
+      });
+    });
+
+    describe('when auth is not loading', () => {
+      it(`should not display a spinner`, () => {
+        mockStore.setState({ auth: { ...fromAuth.initialState, authLoading: false } });
+        fixture.detectChanges();
+        const spinnerElement = debugElement.query(By.css('mat-spinner'));
+        expect(spinnerElement.styles.visibility).toBe('hidden');
+      });
+    });
+  });
 });

@@ -14,7 +14,7 @@ import { SignUpComponent } from '../sign-up/sign-up.component';
 import * as fromAuth from '@core/auth/store/auth.reducers';
 import * as AuthActions from '@core/auth/store/auth.actions';
 import { MaterialModule } from '@shared/material.module';
-import { authModuleRoute, AuthRoute } from '@core/auth/auth-route';
+import { AppRoutes } from '@app/routes';
 
 describe('LoginComponent', () => {
   let fixture: ComponentFixture<LoginComponent>;
@@ -108,7 +108,7 @@ describe('LoginComponent', () => {
         buttonElement.nativeElement.click();
         fixture.detectChanges();
 
-        expect(router.navigateByUrl).toHaveBeenCalledWith(`${authModuleRoute}/${AuthRoute.SIGNUP}`);
+        expect(router.navigateByUrl).toHaveBeenCalledWith(`${AppRoutes.SIGNUP}`);
       });
     });
   });

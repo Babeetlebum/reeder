@@ -1,15 +1,18 @@
-import { TestBed, async, inject } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { provideMockStore } from '@ngrx/store/testing';
 
-import { AuthGuardGuard } from './auth.guard';
+import { AuthGuard } from './auth.guard';
 
-describe('AuthGuardGuard', () => {
+describe('AuthGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [AuthGuardGuard],
+      imports: [RouterTestingModule.withRoutes([])],
+      providers: [AuthGuard, provideMockStore()],
     });
   });
 
-  it('should ...', inject([AuthGuardGuard], (guard: AuthGuardGuard) => {
+  it('should ...', inject([AuthGuard], (guard: AuthGuard) => {
     expect(guard).toBeTruthy();
   }));
 });

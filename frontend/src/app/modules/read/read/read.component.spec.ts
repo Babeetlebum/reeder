@@ -10,10 +10,7 @@ import * as fromParagraphs from '@read/store/paragraphs.reducers';
 import { Paragraph } from '@read/store/read.entities';
 
 import { ReadComponent } from './read.component';
-
-type DeepPartial<T> = {
-  [P in keyof T]?: DeepPartial<T[P]>;
-};
+import { DeepPartial } from '@app/test-helpers';
 
 const initialState = { read: fromRead.initialState, paragraphs: fromParagraphs.initialState };
 

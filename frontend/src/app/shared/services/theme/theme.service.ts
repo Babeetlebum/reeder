@@ -8,10 +8,9 @@ export enum Theme {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ThemeService {
-
   theme$: Observable<Theme>;
   themeSource = new BehaviorSubject<Theme>(Theme.DEFAULT);
 
@@ -21,7 +20,6 @@ export class ThemeService {
 
   public toggleTheme(): void {
     const newTheme = this.themeSource.value === Theme.DARK ? Theme.DEFAULT : Theme.DARK;
-    console.log(`toggleTheme ${this.themeSource.value} -> ${newTheme}`);
     this.themeSource.next(newTheme);
   }
 }

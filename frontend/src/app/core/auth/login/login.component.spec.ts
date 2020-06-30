@@ -31,7 +31,15 @@ describe('LoginComponent', () => {
           MaterialModule,
           ReactiveFormsModule,
           RouterTestingModule.withRoutes([]),
-          StoreModule.forRoot({ auth: fromAuth.reducer }),
+          StoreModule.forRoot(
+            { auth: fromAuth.reducer },
+            {
+              runtimeChecks: {
+                strictStateImmutability: true,
+                strictActionImmutability: true,
+              },
+            },
+          ),
         ],
         providers: [],
       }).compileComponents();

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Actions, ofType, createEffect } from '@ngrx/effects';
 import { of } from 'rxjs';
-import { catchError, exhaustMap, map } from 'rxjs/operators';
+import { catchError, exhaustMap, map, switchMap } from 'rxjs/operators';
 
 import { ReederRepository } from '@read/reeder-api';
 import {
@@ -10,6 +10,7 @@ import {
   reederServiceGetBook,
   reederServiceGetBookFailure,
   reederServiceGetBookSuccess,
+  reederServiceGetParagraphsSuccess,
 } from '@read/store/read.actions';
 
 @Injectable()
@@ -28,7 +29,10 @@ export class ReadEffects {
       ofType(reederServiceGetBook),
       exhaustMap(({ bookId }) =>
         this.reederRepository.getBook(bookId).pipe(
-          map((bookContent) => reederServiceGetBookSuccess({ bookContent })),
+          switchMap(({ bookContent, paragraphs }) =>
+            // dispatch action for bookContent state and paragraphs state
+            of(reederServiceGetBookSuccess({ bookContent }), reederServiceGetParagraphsSuccess({ paragraphs })),
+          ),
           catchError((error) => of(reederServiceGetBookFailure({ error }))),
         ),
       ),

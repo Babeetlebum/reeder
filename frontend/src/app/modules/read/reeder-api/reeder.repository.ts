@@ -4,22 +4,20 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, delay, map } from 'rxjs/operators';
 
-import { BookContent } from '@read/store/read.entities';
 import { ReederResponseDto } from './reeder.dto';
-import { ReederMapper } from './reeder.mapper';
+import { ReederContent, ReederMapper } from './reeder.mapper';
 
 @Injectable({ providedIn: 'root' })
 export class ReederRepository {
   constructor(private http: HttpClient, private reederMapper: ReederMapper) {}
 
-  getBook(bookId: number): Observable<BookContent> {
+  getBook(bookId: number): Observable<ReederContent> {
     // mocked api for now
     return this.http.get<ReederResponseDto>(`./mocks/reeder_book_${bookId}.json`).pipe(
       delay(1500),
-      map(this.reederMapper.mapFromApi),
-      catchError((error) => {
-        console.error(error);
-
+      map((reederItemDto) => this.reederMapper.mapFromApi(reederItemDto)),
+      catchError<ReederContent, Observable<null>>((error) => {
+        console.error(`ReederRepository: ${error.message}`);
         return of(null);
       }),
     );

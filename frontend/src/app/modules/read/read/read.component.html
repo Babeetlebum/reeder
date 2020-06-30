@@ -7,7 +7,7 @@ read works !
     {{ bookContent.title }}
   </h1>
 
-  <p *ngFor="let paragraph of bookContent.paragraphs">
+  <p *ngFor="let paragraph of paragraphs$ | async">
     {{ paragraph.content }}
   </p>
 </article>

@@ -1,11 +1,11 @@
 <mat-spinner [style.visibility]="(bookContentLoading$ | async) ? 'visible' : 'hidden'" [diameter]="40"></mat-spinner>
 
-<article *ngIf="bookContent$ | async as bookContent">
-  <h1>
+<article>
+  <h1 class="title" *ngIf="bookContent$ | async as bookContent">
     {{ bookContent.title }}
   </h1>
 
-  <p *ngFor="let paragraph of bookContent.paragraphs">
+  <p class="paragraph" *ngFor="let paragraph of paragraphs$ | async">
     {{ paragraph.content }}
   </p>
 </article>

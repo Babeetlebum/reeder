@@ -11,7 +11,7 @@ export const initialState: ParagraphState = adapter.getInitialState({});
 
 const reducer = createReducer(
   initialState,
-  on(reederServiceGetParagraphsSuccess, (state, { paragraphs }) => adapter.addAll(paragraphs, { ...state })),
+  on(reederServiceGetParagraphsSuccess, (state, { paragraphs }) => adapter.setAll(paragraphs, { ...state })),
 );
 
 export function paragraphsReducer(state: ParagraphState | undefined, action: Action) {

@@ -47,7 +47,7 @@ describe('LoginComponent', () => {
       fixture = TestBed.createComponent(LoginComponent);
       component = fixture.componentInstance;
       debugElement = fixture.debugElement;
-      store = TestBed.get(Store);
+      store = TestBed.inject(Store);
       fixture.detectChanges();
     });
 
@@ -102,7 +102,7 @@ describe('LoginComponent', () => {
 
     describe('when clicking the signup button', () => {
       it(`should redirect to the signup page`, () => {
-        const router = TestBed.get(Router);
+        const router = TestBed.inject(Router);
         spyOn(router, 'navigateByUrl');
         const buttonElement = debugElement.query(By.css('.go-to-sign-up-button'));
         buttonElement.nativeElement.click();
@@ -126,7 +126,7 @@ describe('LoginComponent', () => {
       fixture = TestBed.createComponent(LoginComponent);
       component = fixture.componentInstance;
       debugElement = fixture.debugElement;
-      mockStore = TestBed.get(MockStore);
+      mockStore = TestBed.inject(MockStore);
     });
 
     describe('when auth is loading', () => {

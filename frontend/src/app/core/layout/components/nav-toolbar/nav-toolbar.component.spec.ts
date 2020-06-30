@@ -1,7 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { Store } from '@ngrx/store';
 import { provideMockStore, MockStore } from '@ngrx/store/testing';
 
 import { NavToolbarComponent } from './nav-toolbar.component';
@@ -14,8 +13,8 @@ describe('NavToolbarComponent', () => {
   let fixture: ComponentFixture<NavToolbarComponent>;
   let mockStore: MockStore<fromAuth.State>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       declarations: [NavToolbarComponent],
       imports: [MaterialModule],
       providers: [provideMockStore({ initialState: { auth: fromAuth.initialState } })],
@@ -24,21 +23,21 @@ describe('NavToolbarComponent', () => {
 
     fixture = TestBed.createComponent(NavToolbarComponent);
     debugElement = fixture.debugElement;
-    mockStore = TestBed.get(Store);
+    mockStore = TestBed.inject(MockStore);
     fixture.detectChanges();
-  }));
+  });
 
   it('should create', () => {
     expect(fixture.componentInstance).toBeTruthy();
   });
 
   describe('when a user is connected', () => {
-    beforeEach(async(() => {
+    beforeEach(() => {
       mockStore.overrideSelector(selectConnectedUserName, 'John');
       mockStore.overrideSelector(selectIsUserConnected, true);
       mockStore.refreshState();
       fixture.detectChanges();
-    }));
+    });
 
     it(`should show the connected user's name`, () => {
       expect(debugElement.query(By.css('.connected-user-name')).nativeElement.innerText).toContain('John');
@@ -50,12 +49,12 @@ describe('NavToolbarComponent', () => {
   });
 
   describe('when no users are connected', () => {
-    beforeEach(async(() => {
+    beforeEach(() => {
       mockStore.overrideSelector(selectConnectedUserName, '');
       mockStore.overrideSelector(selectIsUserConnected, false);
       mockStore.refreshState();
       fixture.detectChanges();
-    }));
+    });
 
     it(`should show an empty connected user's name`, () => {
       expect(debugElement.query(By.css('.connected-user-name')).nativeElement.innerText).toEqual('');

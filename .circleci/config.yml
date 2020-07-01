@@ -16,10 +16,14 @@ jobs:
             yarn run prod
       - run:
           name: Test
-          command: yarn run test --watch=false
+          command: |
+            cd frontend
+            yarn run test --watch=false
       - run:
           name: Test Coverage
-          command: yarn run test --code-coverage --watch=false
+          command:  |
+            cd frontend
+            yarn run test --code-coverage --watch=false
 
 workflows:
     test-workflow:

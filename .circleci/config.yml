@@ -24,6 +24,9 @@ jobs:
           command:  |
             cd frontend
             yarn run test --code-coverage --watch=false
+      - store_artifacts:
+          path: frontend/coverage
+
 
 workflows:
     test-workflow:

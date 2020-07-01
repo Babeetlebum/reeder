@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  test:
+  test-step:
     docker:
       - image: docker.pkg.github.com/babeetlebum/reeder/reeder_frontend-builder:1.0.0
         auth:
@@ -9,13 +9,13 @@ jobs:
     steps:
       - checkout
       - run:
-        name: Test step
-        command: |
-          echo 'This is a test pipeline'
-          cd frontend
-          yarn run test
+          name: Test step
+          command: |
+            echo 'This is a test pipeline'
+            cd frontend
+            yarn run test
         
 workflows:
     test-workflow:
       jobs:
-        - test
+        - test-step

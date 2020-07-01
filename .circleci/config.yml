@@ -1,4 +1,6 @@
 version: 2.1
+orbs:
+  codecov: codecov/codecov@1.0.2
 jobs:
   test-step:
     docker:
@@ -26,6 +28,8 @@ jobs:
             yarn run test --code-coverage --watch=false
       - store_artifacts:
           path: frontend/coverage
+      - codecov/upload:
+          file: frontend/coverage
 
 
 workflows:

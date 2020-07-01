@@ -1,0 +1,34 @@
+version: 2.1
+jobs:
+  test-step:
+    docker:
+      - image: docker.pkg.github.com/babeetlebum/reeder/reeder_frontend-builder:1.0.0
+        auth:
+          username: $GITHUB_DOCKER_USERNAME
+          password: $GITHUB_DOCKER_TOKEN
+    steps:
+      - checkout
+      - run:
+          name: Build
+          command: |
+            cd frontend
+            yarn
+            yarn run prod
+      - run:
+          name: Test
+          command: |
+            cd frontend
+            yarn run test --watch=false
+      - run:
+          name: Test Coverage
+          command:  |
+            cd frontend
+            yarn run test --code-coverage --watch=false
+      - store_artifacts:
+          path: frontend/coverage
+
+
+workflows:
+    test-workflow:
+      jobs:
+        - test-step

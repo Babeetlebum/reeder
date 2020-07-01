@@ -13,6 +13,7 @@ jobs:
           command: |
             echo 'This is a test pipeline'
             cd frontend
+            yarn
             yarn run test
         
 workflows:

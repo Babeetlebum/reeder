@@ -8,10 +8,12 @@ jobs:
           password: $GITHUB_DOCKER_TOKEN
     steps:
       - checkout
-      - run: |
-        echo 'This is a test pipeline'
-        cd frontend
-        yarn run test
+      - run:
+        name: Test step
+        command: |
+          echo 'This is a test pipeline'
+          cd frontend
+          yarn run test
         
 workflows:
     test-workflow:

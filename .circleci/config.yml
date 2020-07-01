@@ -2,16 +2,20 @@ version: 2.1
 orbs:
   node: circleci/node@1.1.6
 jobs:
-  build-and-test:
-    executor:
-      name: node/default
+  test:
+    docker:
+      - image: docker.pkg.github.com/babeetlebum/reeder/reeder_frontend-builder:1.0.0
+        auth:
+          username: $GITHUB_DOCKER_USERNAME
+          password: $GITHUB_DOCKER_TOKEN
     steps:
       - checkout
-      - node/with-cache:
-          steps:
-            - run: yarn
-            - run: yarn run test
+      - run: |
+        echo 'This is a test pipeline'
+        cd frontend
+        yarn run test
+        
 workflows:
-    build-and-test:
+    test-workflow:
       jobs:
-        - build-and-test
+        - test

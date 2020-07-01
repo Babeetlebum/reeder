@@ -9,13 +9,18 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Test step
+          name: Build
           command: |
-            echo 'This is a test pipeline'
             cd frontend
             yarn
-            yarn run test
-        
+            yarn run prod
+      - run:
+          name: Test
+          command: yarn run test --watch=false
+      - run:
+          name: Test Coverage
+          command: yarn run test --code-coverage --watch=false
+
 workflows:
     test-workflow:
       jobs:

@@ -1,3 +1,6 @@
+[![<Babeetlebum>](https://circleci.com/gh/Babeetlebum/reeder.svg?style=shield)](<LINK>)
+
+
 # reeder
 A simple reader app
 

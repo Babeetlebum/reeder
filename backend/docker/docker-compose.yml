@@ -33,6 +33,9 @@ services:
         command: --default-authentication-plugin=mysql_native_password
         environment:
             MYSQL_ROOT_PASSWORD: mysql
+            MYSQL_DATABASE: reeder
+            MYSQL_USER: springuser
+            MYSQL_PASSWORD: springuser
         networks:
             - reverseproxy_default
 

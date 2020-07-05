@@ -63,6 +63,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     }
 
     private void addTokenToHeader(HttpServletResponse response, String token) {
+        response.addHeader("Access-Control-Expose-Headers", HEADER_STRING);
         response.addHeader(HEADER_STRING, TOKEN_PREFIX + token);
     }
 

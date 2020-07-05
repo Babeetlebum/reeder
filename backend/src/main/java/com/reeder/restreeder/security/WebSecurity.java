@@ -51,7 +51,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     }
 
     public JWTAuthenticationFilter getJWTAuthenticationFilter() throws Exception {
-        final JWTAuthenticationFilter filter = new JWTAuthenticationFilter(authenticationManager());
+        final JWTAuthenticationFilter filter = new JWTAuthenticationFilter(authenticationManager(), this.userDetailsService);
         filter.setFilterProcessesUrl(LOGIN_URL);
         return filter;
     }

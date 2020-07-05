@@ -1,0 +1,34 @@
+version: "3"
+services:
+    builder:
+        build:
+            context: builder/
+        volumes:
+            - ..:/app
+            - ~/.m2:/home/user/.m2
+            - lock:/lock
+        networks:
+            - reverseproxy_default
+
+    server:
+        depends_on:
+            - builder
+        build:
+            context: server/
+        volumes:
+            - ../target:/app
+            - lock:/lock
+        working_dir: /app
+        ports:
+            - 8080
+        environment:
+            - VIRTUAL_HOST=back.${COMPOSE_PROJECT_NAME}.local
+        networks:
+            - reverseproxy_default
+
+networks:
+    reverseproxy_default:
+        external: true
+
+volumes:
+    lock:

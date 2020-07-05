@@ -1,4 +1,8 @@
 FROM openjdk:8-jdk-alpine
+
+COPY entrypoint.sh /usr/local/bin
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
 # ----
 # Install Maven
 RUN apk add --no-cache curl tar bash
@@ -10,10 +14,10 @@ ENV M2_HOME /maven
 # speed up Maven JVM a bit
 ENV MAVEN_OPTS="-XX:+TieredCompilation -XX:TieredStopAtLevel=1"
 
-RUN mkdir -p /app
+RUN mkdir -p /app /lock
 WORKDIR /app
 
 RUN adduser user --disabled-password
 USER user
 
-ENTRYPOINT ["mvn", "clean", "package"]
+ENTRYPOINT ["entrypoint.sh"]

@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 
-import { LoginCredentials, User } from '@store/models';
+import { LoginCredentials, User } from './auth.entities';
 
 export const login = createAction('[Auth Login Component] Login', props<{ credentials: LoginCredentials }>());
 export const logout = createAction('[Navbar Component] Logout');

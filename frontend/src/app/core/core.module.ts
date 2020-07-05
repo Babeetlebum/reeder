@@ -5,13 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthModule } from '@core/auth/auth.module';
 import { LayoutModule } from '@core/layout/layout.module';
 
-import { AuthService } from '@core/auth/auth.service';
-
 @NgModule({
-  declarations: [],
   imports: [AuthModule, BrowserAnimationsModule, HttpClientModule, LayoutModule],
-  exports: [],
-  providers: [AuthService],
 })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parentModule: CoreModule) {

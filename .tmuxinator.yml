@@ -26,21 +26,11 @@ windows:
             - cd frontend
             - clear
   - backend:
-      layout: *four_panes_layout_v2
+      layout: even-horizontal
       panes:
         - p1:
             - cd backend/docker
-            - clear
+            - docker-compose up --build
         - p2:
-            - cd backend/docker
-            - sleep 60
-            - docker exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -ti --user=user reeder_server_1 sh
-            - clear
-        - p3:
-            - cd backend/docker
-            - sleep 60
-            - docker exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -ti --user=user reeder_builder_1 bash
-            - clear
-        - p4:
-            - cd backend/docker
+            - cd backend
             - clear

@@ -15,3 +15,5 @@ WORKDIR /app
 
 RUN adduser user --disabled-password
 USER user
+
+ENTRYPOINT ["mvn", "clean", "package"]

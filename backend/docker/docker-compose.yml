@@ -1,3 +1,6 @@
+#   gutenberg:
+#         image: cwolff/gutenberg-http
+
 version: "3"
 services:
     builder:
@@ -6,24 +9,25 @@ services:
         volumes:
             - ..:/app
             - ~/.m2:/home/user/.m2
-        entrypoint: "tail -f /dev/null"
         networks:
             - reverseproxy_default
 
     server:
+        depends_on:
+            - db
+            - builder
         build:
-                context: server/
+            context: server/
         volumes:
             - ../target:/app
+        working_dir: /app
         ports:
             - 8080
         environment:
-            - VIRTUAL_HOST=${COMPOSE_PROJECT_NAME}.local
-        entrypoint: "tail -f /dev/null"
+            - VIRTUAL_HOST=back.${COMPOSE_PROJECT_NAME}.local
         networks:
             - reverseproxy_default
-#   gutenberg:
-#         image: cwolff/gutenberg-http
+
     db:
         image: mysql:8.0.19
         volumes:

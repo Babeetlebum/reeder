@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate, UrlTree, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 import { AppRoutes } from '@app/routes';
 import * as fromAuth from '@core/auth/store/auth.reducers';
@@ -19,7 +19,6 @@ export class AuthGuard implements CanActivate {
   }
 
   canActivate(): Observable<boolean | UrlTree> {
-    console.log(this.router.parseUrl(`/${AppRoutes.LOGIN}`));
     return this.isUserConnected$.pipe(
       map((isUserConnected) => (isUserConnected ? true : this.router.parseUrl(`/${AppRoutes.LOGIN}`))),
     );

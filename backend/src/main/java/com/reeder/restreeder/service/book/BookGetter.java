@@ -4,6 +4,7 @@ import java.io.IOException;
 
 public interface BookGetter {
 
-    String getBook(Integer id) throws IOException;
+    String getBookBody(Integer id) throws IOException;
+    String getBookMetadata(Integer id) throws IOException;
 
 }

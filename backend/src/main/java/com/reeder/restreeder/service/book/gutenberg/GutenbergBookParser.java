@@ -14,9 +14,10 @@ import java.util.ArrayList;
 public class GutenbergBookParser implements BookParser {
 
     @Override
-    public Book parseBook(Integer bookId, String bookString) throws Exception {
+    public Book parseBook(Integer bookId, String bookTitle, String bookString) throws Exception {
         Book book = new Book()
-                .setTitle("Book Title");
+                .setTitle(bookTitle);
+        book.setExternalId(bookId);
 
         StringReader streamReader = null;
         BufferedReader reader = null;

@@ -2,9 +2,6 @@ package com.reeder.restreeder.service.book;
 
 import com.reeder.restreeder.model.book.Book;
 import com.reeder.restreeder.model.book.Paragraph;
-import com.reeder.restreeder.service.book.BookGetter;
-import com.reeder.restreeder.service.book.BookParser;
-import com.reeder.restreeder.service.book.BookService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -27,8 +24,9 @@ public class BookServiceImpl implements BookService {
     }
 
     public Book getBook(Integer id) throws Exception {
-        String bookString = bookGetter.getBook(id);
-        return bookParser.parseBook(id, bookString);
+        String bookTitle = bookGetter.getBookMetadata(id);
+        String bookString = bookGetter.getBookBody(id);
+        return bookParser.parseBook(id, bookTitle, bookString);
     }
 
     public Book keepOnlyParagraphsBetween(Book book, Integer paragraphsMin, Integer paragraphsMax) {

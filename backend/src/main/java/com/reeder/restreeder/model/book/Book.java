@@ -17,7 +17,7 @@ public class Book {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
 
-    private String externalId;
+    private Integer externalId;
 
     private String title;
 

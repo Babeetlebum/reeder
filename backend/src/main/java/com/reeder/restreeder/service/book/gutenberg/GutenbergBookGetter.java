@@ -9,22 +9,24 @@ import com.reeder.restreeder.service.book.BookGetter;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.Objects;
-
-import static com.reeder.restreeder.service.book.gutenberg.GutenbergConstants.GUTENBERG_HOST;
 
 @Service
 public class GutenbergBookGetter implements BookGetter {
     private final OkHttpClient client = new OkHttpClient();
     private final ObjectMapper objectMapper = new ObjectMapper();
 
+    @Value("${gutenberg.hostname}")
+    private String gutenbergHostname;
+
     @Override
     public String getBookBody(Integer bookId) throws IOException {
         Request request = new Request.Builder()
-            .url(String.format("%s/texts/%s/body", GUTENBERG_HOST, bookId))
+            .url(String.format("%s/texts/%s/body", gutenbergHostname, bookId))
             .build();
 
         // synchronous call
@@ -41,7 +43,7 @@ public class GutenbergBookGetter implements BookGetter {
     @Override
     public String getBookMetadata(Integer bookId) throws IOException {
         Request request = new Request.Builder()
-                .url(String.format("%s/texts/%s", GUTENBERG_HOST, bookId))
+                .url(String.format("%s/texts/%s", gutenbergHostname, bookId))
                 .build();
 
         // synchronous call

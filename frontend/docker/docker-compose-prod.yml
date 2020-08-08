@@ -1,0 +1,9 @@
+version: '3'
+services:
+  frontend-webserver:
+    build:
+      context: ..
+      dockerfile: docker/webserver/Dockerfile
+    image: reeder_webserver:latest
+    ports:
+      - 8080:80

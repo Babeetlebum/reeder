@@ -16,5 +16,4 @@ import lombok.experimental.Accessors;
 public class GutenbergBookDto {
     private Integer text_id;
     private String body;
-
 }

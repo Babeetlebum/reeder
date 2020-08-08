@@ -2,6 +2,6 @@ import { IEnvironment } from './environment.interface';
 
 export const environment: IEnvironment = {
   production: false,
-  backUrl: 'missingProdUrlInEnvironment',
+  backUrl: 'http://api.reeder.williamlambert.fr',
   backVersion: 'v1',
 };

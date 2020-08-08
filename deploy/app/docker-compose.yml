@@ -1,0 +1,14 @@
+version: '3'
+services:
+  app:
+    image: docker.pkg.github.com/babeetlebum/reeder/reeder_app:1.1
+    ports:
+      - 80
+    networks:
+      - reverseproxy_default
+    environment:
+      VIRTUAL_HOST: ${COMPOSE_PROJECT_NAME}.${SERVER_HOSTNAME}
+
+networks:
+  reverseproxy_default:
+    external: true

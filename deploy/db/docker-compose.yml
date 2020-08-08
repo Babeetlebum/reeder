@@ -1,35 +1,40 @@
 version: "3"
 services:
-
     db:
         image: mysql:8.0.19
-        volumes:
-            - ../db:/db
         ports:
             - ${MYSQL_PORT}:3306
         command: --default-authentication-plugin=mysql_native_password
+        env_file:
+            - .env
         environment:
             MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
             MYSQL_DATABASE: ${MYSQL_DATABASE}
             MYSQL_USER: ${MYSQL_USER}
             MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+            VIRTUAL_HOST: db.${COMPOSE_PROJECT_NAME}.${SERVER_HOSTNAME}
+        volumes:
+          - ./data:/var/lib/mysql
         networks:
-            - reverseproxy_default
+          - back_default
+          - reverseproxy_default
 
     phpmyadmin:
         image: phpmyadmin/phpmyadmin:latest
         ports:
-            - 8080
+            - 80
         environment:
-            - VIRTUAL_HOST=db.${COMPOSE_PROJECT_NAME}.local
-            - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-            - PMA_USERNAME=${PMA_USERNAME}
-            - PMA_PASSWORD=${PMA_PASSWORD}
-        links:
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            PMA_HOST: db
+            VIRTUAL_HOST: pma.${COMPOSE_PROJECT_NAME}.${SERVER_HOSTNAME}
+        depends_on:
             - db
         networks:
-            - reverseproxy_default
+          - back_default
+          - reverseproxy_default
 
 networks:
-    reverseproxy_default:
-        external: true
+  back_default:
+    external: true
+  reverseproxy_default:
+    external: true

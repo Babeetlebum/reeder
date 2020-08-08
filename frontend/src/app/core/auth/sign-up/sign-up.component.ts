@@ -24,8 +24,8 @@ export class SignUpComponent {
   //
   // protected isSignup: boolean = false;
   // protected user: User;
-  protected hidePassword = true;
-  protected hideConfirmPassword = true;
+  public hidePassword = true;
+  public hideConfirmPassword = true;
 
   public constructor(private router: Router) {}
 
@@ -47,20 +47,21 @@ export class SignUpComponent {
   // }
   //
   //
-  // protected signUp() {
-  //   const authForm: SignupRequestVariables = {
-  //     email: this.signupForm.controls.email.value,
-  //     password: this.signupForm.controls.password.value,
-  //     username: this.signupForm.controls.username.value,
-  //   };
-  //   this.authService
-  //     .signup(authForm)
-  //     .then(() => {
-  //       console.log("show 'account created with success' message");
-  //       this.router.navigateByUrl('/login');
-  //     })
-  //     .catch(console.warn);
-  // }
+  public signUp() {
+    console.warn(`Signup not implemented yet`);
+    // const authForm: SignupRequestVariables = {
+    //   email: this.signupForm.controls.email.value,
+    //   password: this.signupForm.controls.password.value,
+    //   username: this.signupForm.controls.username.value,
+    // };
+    // this.authService
+    //   .signup(authForm)
+    //   .then(() => {
+    //     console.log("show 'account created with success' message");
+    //     this.router.navigateByUrl('/login');
+    //   })
+    //   .catch(console.warn);
+  }
   //
   //
   // protected onCancel() {

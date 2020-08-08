@@ -6,6 +6,7 @@
   "version": "0.0.0",
   "scripts": {
     "mux": "yarn run docker:build && mux local",
+    "docker:login": "cat docker/github-public-token | docker login https://docker.pkg.github.com -u Babeetlebum --password-stdin",
     "docker:up": "COMPOSE_PROJECT_NAME=reeder docker-compose -f docker/docker-compose.yml up --build",
     "docker:build": "COMPOSE_PROJECT_NAME=reeder docker-compose -f docker/docker-compose.yml build",
     "docker:connect": "docker exec -ti reeder_frontend-builder_1 /bin/bash",

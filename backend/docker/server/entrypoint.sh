@@ -9,7 +9,7 @@ COUNTER=1
 while [ -f "${LOCK_FILE}" ];
 do
     sleep 3
-    echo "Waiting for lock to be freed (${COUNTER})";
+    echo "Waiting for lock to be released (${COUNTER})";
     COUNTER=$((COUNTER+1))
 done
 

@@ -9,8 +9,8 @@ windows:
       layout: *four_panes_layout_v2
       panes:
         - p1:
-            - cd frontend/docker
-            - cat github-public-token | docker login https://docker.pkg.github.com -u Babeetlebum --password-stdin
+            - cd frontend
+            - yarn run docker:login
             - yarn run docker:up
         - p2:
             - cd frontend

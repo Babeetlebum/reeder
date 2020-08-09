@@ -5,6 +5,7 @@ LABEL name="reeder_api" version="0.0.1"
 
 ENV TAR_NAME=reeder.jar
 COPY ./target/reeder-0.0.1-SNAPSHOT.jar ${TAR_NAME}
+COPY ./docker/server-prod/application.prod.properties application.properties
 
 EXPOSE 8080
 

@@ -26,44 +26,13 @@ public class RestReederApplication {
 		) {
 	        return args -> {
 	            // Create a user
-	            User user = userRepository.findByEmail("alfred.kwak@gmail.com");
+	            User user = userRepository.findByEmail("joe@joe.com");
 	            if (user == null) {
 	                user = new User()
-                        .setEmail("alfred.kwak@gmail.com")
-                        .setName("Alfred Kwak");
+                        .setEmail("joe@joe.com")
+                        .setName("joe");
 	                userRepository.save(user);
 	            }
-
-				// Create a book
-//				Book book = bookRepository.findByTitle("My book");
-//				if (book == null) {
-//					Paragraph paragraph1 = new Paragraph()
-//							.setContent("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
-//					Paragraph paragraph2 = new Paragraph()
-//							.setContent("Paragraph 2");
-//					Paragraph paragraph3 = new Paragraph()
-//							.setContent("Paragraph 3");
-//					book = new Book()
-//							.setTitle("My book")
-//							.setExternalId("external-id")
-//							.addParagraph(paragraph1)
-//							.addParagraph(paragraph2)
-//							.addParagraph(paragraph3);
-//					bookRepository.save(book);
-//				}
-
-//				System.out.println("GutenbergBook");
-//				try {
-//					Book gutenbergBook = bookService.getBook(37106);
-//					System.out.println("GutenbergBook");
-//					bookRepository.save(gutenbergBook);
-//				} catch(IOException e) {
-//					System.out.println("CommandLineRunner - IOException");
-//					System.out.println(e.getMessage());
-//				} catch(Exception e) {
-//					System.out.println("CommandLineRunner - Exception");
-//					System.out.println(e.getMessage());
-//				}
 	    };
 	}
 

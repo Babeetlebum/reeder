@@ -39,5 +39,6 @@ export class ChooseComponent implements OnInit {
   }
 
   searched(search: string): void {
+    this.store.dispatch(searchBooks({ search }));
   }
 }

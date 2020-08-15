@@ -17,7 +17,6 @@ services:
           - ./data:/var/lib/mysql
         networks:
           - back_default
-          - reverseproxy_default
 
     phpmyadmin:
         image: phpmyadmin/phpmyadmin:latest

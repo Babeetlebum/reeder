@@ -1,0 +1,18 @@
+<mat-form-field class="w-full">
+  <mat-label>{{ title }}</mat-label>
+  <input matInput type="search" [formControl]="searchInput" [placeholder]="placeholder" />
+
+  <div matSuffix>
+    <mat-spinner *ngIf="loader$ | async; else loaded" [diameter]="20"></mat-spinner>
+
+    <ng-template #loaded>
+      <mat-button class="cursor-pointer" *ngIf="this.searchInput.dirty" (click)="this.searchInput.reset()">
+        <mat-icon>close</mat-icon>
+      </mat-button>
+
+      <mat-button class="cursor-pointer" *ngIf="!this.searchInput.dirty">
+        <mat-icon>search</mat-icon>
+      </mat-button>
+    </ng-template>
+  </div>
+</mat-form-field>

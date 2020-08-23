@@ -6,7 +6,7 @@ import { Paragraph } from './read.entities';
 
 export const PARAGRAPHS_STATE = 'paragraphs';
 export interface ParagraphState extends EntityState<Paragraph> {}
-export const adapter = createEntityAdapter<Paragraph>();
+export const adapter = createEntityAdapter<Paragraph>({ selectId: selectParagraphId });
 export const initialState: ParagraphState = adapter.getInitialState({});
 
 const reducer = createReducer(
@@ -16,4 +16,8 @@ const reducer = createReducer(
 
 export function paragraphsReducer(state: ParagraphState | undefined, action: Action) {
   return reducer(state, action);
+}
+
+export function selectParagraphId(paragraph: Paragraph): number {
+  return paragraph.delta;
 }

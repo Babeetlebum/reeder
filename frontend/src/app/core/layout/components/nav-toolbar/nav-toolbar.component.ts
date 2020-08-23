@@ -4,8 +4,8 @@ import { Observable, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 
 import { AppRoutes } from '@app/routes';
-import * as AuthActions from '@core/auth/store/auth.actions';
-import { selectConnectedUserName, selectHasErrorMessage, selectIsUserConnected } from '@core/auth/store/auth.selectors';
+import * as AuthActions from '@auth/store/auth.actions';
+import { selectConnectedUserName, selectHasErrorMessage, selectIsUserConnected } from '@auth/store/auth.selectors';
 import { selectPageTitle } from '@core/layout/store/layout.selectors';
 
 @Component({

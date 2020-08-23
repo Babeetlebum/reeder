@@ -30,7 +30,8 @@ public class RestReederApplication {
 	            if (user == null) {
 	                user = new User()
                         .setEmail("joe@joe.com")
-                        .setName("joe");
+                        .setName("joe")
+	                	.setPassword("7SNjFrrqS6tTxRjxiKe3jzy4GRLcAAtJ");
 	                userRepository.save(user);
 	            }
 	    };

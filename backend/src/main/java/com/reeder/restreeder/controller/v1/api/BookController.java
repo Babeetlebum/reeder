@@ -51,16 +51,22 @@ public class BookController {
     @PostMapping("/add")
     public @ResponseBody
     BookDto addNewBook(@Valid @RequestBody BookAddDto bookAddDto) throws Exception {
-        Book book = bookService.getBook(bookAddDto.getBookId());
-        final Book savedBook = bookRepository.save(book);
+        final Book savedBook = bookService.saveBook(bookAddDto.getBookId());
         return retrieveBookWithParagraphs(savedBook.getId(), 0, 100);
     }
 
-    private BookDto retrieveBookWithParagraphs(Integer bookId, Integer paragraphMin, Integer paragraphMax) {
-        Book foundBook = bookRepository.findById(bookId)
-                .orElseThrow(() -> new BookNotFoundException(bookId));
+    private BookDto retrieveBookWithParagraphs(Integer bookId, Integer paragraphMin, Integer paragraphMax) throws BookNotFoundException {
+        Book foundBook = bookRepository.findByExternalId(bookId)
+                .orElseGet(() -> {
+                    try {
+                        return bookService.saveBook(bookId);
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                        throw new BookNotFoundException(bookId);
+                    }
+                });
 
-        List<Paragraph> foundParagraphs = paragraphRepository.findByDeltaBetweenOrderByDelta(paragraphMin, paragraphMax)
+        List<Paragraph> foundParagraphs = paragraphRepository.findByExternalBookIdAndDeltaBetweenOrderByDelta(bookId, paragraphMin, paragraphMax)
                 .orElse(new ArrayList<>());
 
         return bookMapper.toDto(

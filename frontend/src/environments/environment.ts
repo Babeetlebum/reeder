@@ -2,7 +2,7 @@ import { IEnvironment } from './environment.interface';
 
 export const environment: IEnvironment = {
   production: false,
-  backUrl: 'http://back.reeder.local',
+  backUrl: 'http://localhost:8080',
   backVersion: 'v1',
   gutendexApiUrl: 'http://gutendex.williamlambert.fr',
 };

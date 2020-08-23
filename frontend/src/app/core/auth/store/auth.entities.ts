@@ -20,4 +20,4 @@ export const TEST_USER: User = {
   email: 'joe@joe.com',
   token: 'JOETOKEN',
 };
-export const TEST_PASSWORD = 'joejoe';
+export const TEST_PASSWORD = '7SNjFrrqS6tTxRjxiKe3jzy4GRLcAAtJ';

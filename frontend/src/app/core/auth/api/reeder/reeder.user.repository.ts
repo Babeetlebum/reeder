@@ -6,8 +6,8 @@ import { map } from 'rxjs/operators';
 import { environment } from '@environment';
 import { ReederUserGetDto } from './reeder.user.dto';
 import { ReederUserMapper } from './reeder.user.mapper';
-import { LoginCredentials, User } from '@core/auth/store/auth.entities';
-import { UserRepository } from '@core/auth/api/user.repository';
+import { LoginCredentials, User } from '@auth/store/auth.entities';
+import { UserRepository } from '@auth/api/user.repository';
 
 const baseUrl = `${environment.backUrl}/api/${environment.backVersion}`;
 

@@ -5,8 +5,8 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { AppRoutes } from '@app/routes';
-import * as fromAuth from '@core/auth/store/auth.reducers';
-import { selectIsUserConnected } from '@core/auth/store/auth.selectors';
+import * as fromAuth from '@auth/store/auth.reducers';
+import { selectIsUserConnected } from '@auth/store/auth.selectors';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +14,7 @@ import { selectIsUserConnected } from '@core/auth/store/auth.selectors';
 export class AuthGuard implements CanActivate {
   isUserConnected$: Observable<boolean>;
 
-  public constructor(private authStore: Store<fromAuth.State>, private router: Router) {
+  public constructor(private authStore: Store<fromAuth.AuthState>, private router: Router) {
     this.isUserConnected$ = this.authStore.select(selectIsUserConnected);
   }
 

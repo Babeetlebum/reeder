@@ -17,8 +17,9 @@ http://reeder.williamlambert.fr/
 * [x] Book list display works
 * [x] Book searching works
 * [x] JWT authorization works
+* [x] Downloading new books works
+* [x] Book reading works (only first 100 paragraphs for now)
 * [ ] Sign up is not wired yet (implemented in backend)
-* [ ] Book reading is not wired yet (implemented in backend)
 * [ ] Reading progress is not saved yet
 
 ## Why and How
@@ -33,7 +34,7 @@ Angular is always my go-to choice for the frontend part of a new project but I d
 Instead of bootstrap I wanted to try Tailwind CSS, it doesn't have the best integration with angular so far but it is a powerful and easy to learn CSS framework.
 
 ### State Container
-I never had the chance to try my hand at a state container, this app was the perfect opportunity to take a closer look at the NgRx framework inspired by Redux. It's been a blast to use so far. 
+I never had the chance to try my hand at a state container, this app was the perfect opportunity to take a closer look at the NgRx framework inspired by Redux. It's been a blast to use so far.
 
 ### Directory structure
 In my experience, angular projects tend to sprawl into a headache inducing mess. In order to mitigate this issue I spent a good amount of time reading on this issue and came out with a healthy mix of good practices.
@@ -60,4 +61,3 @@ Both the front app and the rest API contain
 
 ### CI / CD
 CircleCI builds the project and run tests, no deployment yet.
-

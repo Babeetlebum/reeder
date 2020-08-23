@@ -19,7 +19,7 @@ export const initialState: ReadState = {
 
 const reducer = createReducer(
   initialState,
-  on(ReadActions.getBook, (state) => ({ ...state, bookContentLoading: true })),
+  on(ReadActions.getBook, (state) => ({ ...state, bookContentLoading: true, bookContent: null })),
   on(ReadActions.reederServiceGetBook, (state) => ({ ...state })),
   on(ReadActions.reederServiceGetBookSuccess, (state, { bookContent }) => ({
     ...state,
@@ -30,6 +30,7 @@ const reducer = createReducer(
     ...state,
     bookContentLoading: false,
     errorMessage: error.message,
+    bookContent: null,
   })),
 );
 

@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { LoginCredentials, User } from '@core/auth/store/auth.entities';
+import { LoginCredentials, User } from '@auth/store/auth.entities';
 import { InjectionToken } from '@angular/core';
 
 // this interface + injection token allows to easily change which api is injected

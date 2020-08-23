@@ -5,10 +5,10 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { AppRoutes } from '@app/routes';
-import * as AuthActions from '@core/auth/store/auth.actions';
-import * as fromAuth from '@core/auth/store/auth.reducers';
-import { selectAuthLoading } from '@core/auth/store/auth.selectors';
-import { LoginCredentials, TEST_USER, TEST_PASSWORD } from '@core/auth/store/auth.entities';
+import * as AuthActions from '@auth/store/auth.actions';
+import * as fromAuth from '@auth/store/auth.reducers';
+import { selectAuthLoading } from '@auth/store/auth.selectors';
+import { LoginCredentials, TEST_USER, TEST_PASSWORD } from '@auth/store/auth.entities';
 const PASSWORD_VALIDATOR = [Validators.required, Validators.minLength(6)];
 
 @Component({
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   authLoading$: Observable<boolean>;
   hidePassword = true;
 
-  public constructor(private router: Router, private store: Store<fromAuth.State>) {}
+  public constructor(private router: Router, private store: Store<fromAuth.AuthState>) {}
 
   ngOnInit() {
     this.authLoading$ = this.store.select(selectAuthLoading);

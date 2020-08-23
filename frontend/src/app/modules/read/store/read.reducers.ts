@@ -30,6 +30,7 @@ const reducer = createReducer(
     ...state,
     bookContentLoading: false,
     errorMessage: error.message,
+    bookContent: null,
   })),
 );
 

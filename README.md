@@ -2,10 +2,24 @@
 
 
 # reeder
-A simple reader app
+A simple reader app.
+
+Goal :
+* The books are retrieved from the [Gutenberg](https://www.gutenberg.org/) online free library
+* Users can sign up / sign in, search for books and read them. Their progress is saved.
 
 ## State
 **Work in progress**.
+
+http://reeder.williamlambert.fr/
+* [] Interface is temporary and not responsive yet
+* [x] Sign in works
+* [x] Book list display works
+* [x] Book searching works
+* [x] JWT authorization works
+* [] Sign up is not wired yet (implemented in backend)
+* [] Book reading is not wired yet (implemented in backend)
+* [] Reading progress is not saved yet
 
 ## Why and How
 This app is a simple personal project to expand my knowledge on technologies I'm interested in.
@@ -46,8 +60,4 @@ Both the front app and the rest API contain
 
 ### CI / CD
 CircleCI builds the project and run tests, no deployment yet.
-
-### Google Cloud Platform
-Working a lot with google APIs recently I wanted to give GCP a try. It offers cheap simple solutions for a test project.
-When in need of persistent data, a `Compute engine` VM is a cheaper solution than using `Cloud SQL` + `Cloud Run` to host the database and the REST API. The frontend stateless part can be easily dockerized and deployed via `Cloud Run`.
 

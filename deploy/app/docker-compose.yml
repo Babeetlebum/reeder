@@ -1,7 +1,7 @@
 version: '3'
 services:
   app:
-    image: docker.pkg.github.com/babeetlebum/reeder/reeder_app:1.1
+    image: docker.pkg.github.com/babeetlebum/reeder/reeder_app:1.3
     ports:
       - 80
     networks:

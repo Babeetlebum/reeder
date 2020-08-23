@@ -2,7 +2,7 @@ import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AuthModule } from '@core/auth/auth.module';
+import { AuthModule } from '@auth/auth.module';
 import { LayoutModule } from '@core/layout/layout.module';
 
 @NgModule({

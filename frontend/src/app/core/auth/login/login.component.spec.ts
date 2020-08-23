@@ -11,8 +11,8 @@ import { MockDeclaration } from 'ng-mocks';
 
 import { LoginComponent } from './login.component';
 import { SignUpComponent } from '../sign-up/sign-up.component';
-import * as fromAuth from '@core/auth/store/auth.reducers';
-import * as AuthActions from '@core/auth/store/auth.actions';
+import * as fromAuth from '@auth/store/auth.reducers';
+import * as AuthActions from '@auth/store/auth.actions';
 import { MaterialModule } from '@shared/material.module';
 import { AppRoutes } from '@app/routes';
 

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AuthLayoutComponent, PageLayoutComponent } from '@core/layout/layouts/';
-import { AuthGuard } from '@core/auth/guard/auth.guard';
+import { AuthGuard } from '@auth/guard/auth.guard';
 import { AppRoutes } from '@app/routes';
 
 export const DEFAULT_ROUTE = `/${AppRoutes.CHOOSE}`;

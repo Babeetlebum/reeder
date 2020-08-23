@@ -16,7 +16,7 @@
     "paths": {
       "@app/*": ["src/app/*"],
       "@store/*": ["src/app/store/*"],
-      "@auth/*": ["src/app/modules/auth/*"],
+      "@auth/*": ["src/app/core/auth/*"],
       "@choose/*": ["src/app/modules/choose/*"],
       "@gutendex-api": ["src/app/modules/gutendex-api/index"],
       "@core/*": ["src/app/core/*"],

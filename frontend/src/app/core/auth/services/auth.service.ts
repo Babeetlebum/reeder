@@ -1,9 +1,9 @@
 import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { USER_REPOSITORY_TOKEN, UserRepository } from '@core/auth/api/user.repository';
+import { USER_REPOSITORY_TOKEN, UserRepository } from '@auth/api/user.repository';
 
-import { LoginCredentials, User } from '@core/auth/store/auth.entities';
+import { LoginCredentials, User } from '@auth/store/auth.entities';
 
 @Injectable({
   providedIn: 'root',

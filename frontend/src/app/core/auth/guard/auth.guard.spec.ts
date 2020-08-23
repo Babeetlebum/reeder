@@ -4,8 +4,8 @@ import { DefaultUrlSerializer, Router, RouterModule } from '@angular/router';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
 import { AuthGuard } from './auth.guard';
-import * as fromAuth from '@core/auth/store/auth.reducers';
-import { selectIsUserConnected } from '@core/auth/store/auth.selectors';
+import * as fromAuth from '@auth/store/auth.reducers';
+import { selectIsUserConnected } from '@auth/store/auth.selectors';
 import { AppRoutes } from '@app/routes';
 import { DeepPartial } from '@app/test-helpers';
 

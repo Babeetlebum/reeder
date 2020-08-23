@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { provideMockStore } from '@ngrx/store/testing';
 
 import { PageLayoutComponent } from './page-layout.component';
-import * as fromAuth from '@core/auth/store/auth.reducers';
+import * as fromAuth from '@auth/store/auth.reducers';
 import { FooterComponent, NavToolbarComponent } from '@core/layout/components';
 import { MaterialModule } from '@shared/material.module';
 

@@ -6,9 +6,9 @@ import { provideMockStore, MockStore } from '@ngrx/store/testing';
 
 import { NavToolbarComponent } from './nav-toolbar.component';
 import { MaterialModule } from '@shared/material.module';
-import * as fromAuth from '@core/auth/store/auth.reducers';
+import * as fromAuth from '@auth/store/auth.reducers';
 import * as fromLayout from '@core/layout/store/layout.reducers';
-import { selectConnectedUserName, selectIsUserConnected } from '@core/auth/store/auth.selectors';
+import { selectConnectedUserName, selectIsUserConnected } from '@auth/store/auth.selectors';
 
 const initialState = { auth: fromAuth.initialState, layout: fromLayout.initialState };
 

@@ -1,4 +1,4 @@
 export interface ReederUserGetDto {
   email: string;
-  username: string;
+  name: string;
 }

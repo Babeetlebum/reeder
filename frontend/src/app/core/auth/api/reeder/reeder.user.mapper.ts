@@ -8,8 +8,10 @@ import { User } from '@auth/store/auth.entities';
 })
 export class ReederUserMapper {
   mapGetUser(userDto: ReederUserGetDto, token: string): User {
+    const { name, ...user } = userDto;
     return {
-      ...userDto,
+      ...user,
+      username: name,
       token,
     };
   }

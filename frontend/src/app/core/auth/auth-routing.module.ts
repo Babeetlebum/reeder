@@ -7,17 +7,16 @@ import { SignUpComponent } from '@core/auth/sign-up/sign-up.component';
 
 const routes: Routes = [
   {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: AppRoutes.LOGIN,
-  },
-  {
     path: AuthRoutes.LOGIN,
     component: LoginComponent,
   },
   {
     path: AuthRoutes.SIGNUP,
     component: SignUpComponent,
+  },
+  {
+    path: 'auth/*',
+    redirectTo: AppRoutes.LOGIN,
   },
 ];
 

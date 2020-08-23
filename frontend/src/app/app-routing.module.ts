@@ -9,11 +9,6 @@ export const DEFAULT_ROUTE = `/${AppRoutes.CHOOSE}`;
 
 const routes: Routes = [
   {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: AppRoutes.AUTH,
-  },
-  {
     path: AppRoutes.AUTH,
     component: AuthLayoutComponent,
     loadChildren: () => import('./core/auth/auth.module').then((m) => m.AuthModule),
@@ -31,8 +26,13 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: DEFAULT_ROUTE,
+  },
+  {
     path: '**',
-    redirectTo: AppRoutes.AUTH,
+    redirectTo: DEFAULT_ROUTE,
   },
 ];
 

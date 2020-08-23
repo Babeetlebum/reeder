@@ -4,4 +4,5 @@ export const environment: IEnvironment = {
   production: false,
   backUrl: 'http://api.reeder.williamlambert.fr',
   backVersion: 'v1',
+  gutendexApiUrl: 'http://gutendex.williamlambert.fr',
 };

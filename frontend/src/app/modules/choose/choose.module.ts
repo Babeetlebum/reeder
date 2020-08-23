@@ -7,6 +7,7 @@ import { ChooseComponent } from '@choose/choose/choose.component';
 import { ChooseEffects } from '@choose/store/choose.effects';
 import { CHOOSE_STATE, reducer } from '@choose/store/choose.reducers';
 import { MaterialModule } from '@shared/material.module';
+import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
   declarations: [ChooseComponent],
@@ -15,6 +16,7 @@ import { MaterialModule } from '@shared/material.module';
     ChooseRoutingModule,
     EffectsModule.forFeature([ChooseEffects]),
     MaterialModule,
+    SharedModule,
     StoreModule.forFeature(CHOOSE_STATE, reducer),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

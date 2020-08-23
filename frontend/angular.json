@@ -29,7 +29,6 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              { "glob": "**/*json", "input": "src/app/modules/choose/gutendex-api/mocks", "output": "/mocks/" },
               { "glob": "**/*json", "input": "src/app/modules/read/reeder-api/mocks", "output": "/mocks/" }
             ],
             "styles": ["src/styles.scss", "src/scss/tailwind.scss"],

@@ -10,12 +10,14 @@ export interface State {
   bookListLoading: boolean;
   bookList: Book[];
   errorMessage: string;
+  search: string;
 }
 
 export const initialState: State = {
   bookListLoading: false,
   bookList: [],
   errorMessage: null,
+  search: '',
 };
 
 const chooseReducer = createReducer(
@@ -28,6 +30,18 @@ const chooseReducer = createReducer(
     bookList,
   })),
   on(ChooseActions.gutendexServiceGetBooksFailure, (state, { error }) => ({
+    ...state,
+    bookListLoading: false,
+    errorMessage: error.message,
+  })),
+  on(ChooseActions.searchBooks, (state, { search }) => ({ ...state, bookListLoading: true, search })),
+  on(ChooseActions.gutendexServiceSearchBooks, (state, { search }) => ({ ...state })),
+  on(ChooseActions.gutendexServiceSearchBooksSuccess, (state, { bookList }) => ({
+    ...state,
+    bookListLoading: false,
+    bookList,
+  })),
+  on(ChooseActions.gutendexServiceSearchBooksFailure, (state, { error }) => ({
     ...state,
     bookListLoading: false,
     errorMessage: error.message,

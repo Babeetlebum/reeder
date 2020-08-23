@@ -20,7 +20,7 @@ describe('LoginComponent', () => {
   let fixture: ComponentFixture<LoginComponent>;
   let component: LoginComponent;
   let debugElement: DebugElement;
-  let store: Store<fromAuth.State>;
+  let store: Store<fromAuth.AuthState>;
 
   describe('Integration testing', () => {
     beforeEach(async () => {
@@ -114,7 +114,7 @@ describe('LoginComponent', () => {
   });
 
   describe('State testing', () => {
-    let mockStore: MockStore<{ auth: fromAuth.State }>;
+    let mockStore: MockStore<{ auth: fromAuth.AuthState }>;
 
     beforeEach(async () => {
       await TestBed.configureTestingModule({

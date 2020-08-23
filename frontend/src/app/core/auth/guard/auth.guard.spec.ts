@@ -14,7 +14,7 @@ import { cold } from 'jasmine-marbles';
 const initialState = { auth: fromAuth.initialState };
 
 describe('AuthGuard', () => {
-  let mockStore: MockStore<DeepPartial<{ auth: fromAuth.State }>>;
+  let mockStore: MockStore<DeepPartial<{ auth: fromAuth.AuthState }>>;
   let mockRouter: Router;
   let serializer: DefaultUrlSerializer;
 

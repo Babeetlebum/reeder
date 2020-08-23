@@ -74,7 +74,7 @@ describe('ReadComponent', () => {
 
   describe('when the paragraphs are available', () => {
     const mockContents = ['Mock paragraph 1', 'Mock paragraph 2'];
-    const mockParagraphs = mockContents.map((paragraph, index) => ({ id: index, content: paragraph } as Paragraph));
+    const mockParagraphs = mockContents.map((paragraph, index) => ({ delta: index, content: paragraph } as Paragraph));
 
     it('should display the paragraphs', () => {
       mockStore.setState({

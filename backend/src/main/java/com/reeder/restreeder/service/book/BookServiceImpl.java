@@ -2,6 +2,7 @@ package com.reeder.restreeder.service.book;
 
 import com.reeder.restreeder.model.book.Book;
 import com.reeder.restreeder.model.book.Paragraph;
+import com.reeder.restreeder.repository.book.BookRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -12,13 +13,16 @@ import static java.lang.Integer.min;
 @Service
 public class BookServiceImpl implements BookService {
 
+    private final BookRepository bookRepository;
     private final BookGetter bookGetter;
     private final BookParser bookParser;
 
     public BookServiceImpl(
+            BookRepository bookRepository,
             BookGetter bookGetter,
             BookParser bookParser
     ) {
+        this.bookRepository = bookRepository;
         this.bookGetter = bookGetter;
         this.bookParser = bookParser;
     }
@@ -44,4 +48,11 @@ public class BookServiceImpl implements BookService {
         }
         return book.setParagraphs(newParagraphs);
     }
+
+    public Book saveBook(Integer id) throws Exception {
+        Book book = getBook(id);
+        return bookRepository.save(book);
+    }
+
+
 }

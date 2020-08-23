@@ -12,14 +12,14 @@ Goal :
 **Work in progress**.
 
 http://reeder.williamlambert.fr/
-* [] Interface is temporary and not responsive yet
+* [ ] Interface is temporary and not responsive yet
 * [x] Sign in works
 * [x] Book list display works
 * [x] Book searching works
 * [x] JWT authorization works
-* [] Sign up is not wired yet (implemented in backend)
-* [] Book reading is not wired yet (implemented in backend)
-* [] Reading progress is not saved yet
+* [ ] Sign up is not wired yet (implemented in backend)
+* [ ] Book reading is not wired yet (implemented in backend)
+* [ ] Reading progress is not saved yet
 
 ## Why and How
 This app is a simple personal project to expand my knowledge on technologies I'm interested in.

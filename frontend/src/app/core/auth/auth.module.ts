@@ -1,5 +1,6 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -24,7 +25,10 @@ import { AuthInterceptor } from '@auth/api/auth.interceptor';
     MaterialModule,
     StoreModule.forFeature(AUTH_STATE, reducer),
   ],
-  providers: [{ provide: USER_REPOSITORY_TOKEN, useClass: ReederUserRepository }],
+  providers: [
+    { provide: USER_REPOSITORY_TOKEN, useClass: ReederUserRepository },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AuthModule {}

@@ -1,7 +1,7 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { createEntityAdapter, EntityState } from '@ngrx/entity';
 
-import { reederServiceGetParagraphsSuccess } from './read.actions';
+import { getBook, reederServiceGetParagraphsSuccess } from './read.actions';
 import { Paragraph } from './read.entities';
 
 export const PARAGRAPHS_STATE = 'paragraphs';
@@ -12,6 +12,7 @@ export const initialState: ParagraphState = adapter.getInitialState({});
 const reducer = createReducer(
   initialState,
   on(reederServiceGetParagraphsSuccess, (state, { paragraphs }) => adapter.setAll(paragraphs, { ...state })),
+  on(getBook, (state) => adapter.setAll([], { ...state })),
 );
 
 export function paragraphsReducer(state: ParagraphState | undefined, action: Action) {

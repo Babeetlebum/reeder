@@ -15,7 +15,7 @@ const initialState = { auth: fromAuth.initialState, layout: fromLayout.initialSt
 describe('NavToolbarComponent', () => {
   let debugElement: DebugElement;
   let fixture: ComponentFixture<NavToolbarComponent>;
-  let mockStore: MockStore<fromAuth.State>;
+  let mockStore: MockStore<fromAuth.AuthState>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({

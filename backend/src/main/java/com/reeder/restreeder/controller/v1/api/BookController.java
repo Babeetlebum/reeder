@@ -57,7 +57,7 @@ public class BookController {
     }
 
     private BookDto retrieveBookWithParagraphs(Integer bookId, Integer paragraphMin, Integer paragraphMax) {
-        Book foundBook = bookRepository.findById(bookId)
+        Book foundBook = bookRepository.findByExternalId(bookId)
                 .orElseThrow(() -> new BookNotFoundException(bookId));
 
         List<Paragraph> foundParagraphs = paragraphRepository.findByDeltaBetweenOrderByDelta(paragraphMin, paragraphMax)

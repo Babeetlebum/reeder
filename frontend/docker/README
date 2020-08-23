@@ -1,0 +1,9 @@
+# Manual Deploy
+
+- build the dist folder from the `builder` container
+  - `yarn run prod`
+- build and push the dockerized image from outside the container :
+  - `yarn run docker:package`
+  - login to docker repository
+  - `docker tag reeder_frontend-webserver:latest docker.pkg.github.com/babeetlebum/reeder/reeder_app:NEW_VERSION`
+  - `docker push docker.pkg.github.com/babeetlebum/reeder/reeder_app:NEW_VERSION`

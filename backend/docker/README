@@ -1,0 +1,9 @@
+# Manual Deploy
+
+- build the jar file from the `builder` container
+    - `docker-compose -f docker-compose-serve.yml up --build`
+- build and push the dockerized image from outside the container :
+    - login to docker repository
+    - `COMPOSE_PROJECT_NAME=reeder docker-compose -f docker/docker-compose-prod.yml build`
+    - `docker tag reeder_api docker.pkg.github.com/babeetlebum/reeder/reeder_api:NEW_VERSION`
+    - `docker push docker.pkg.github.com/babeetlebum/reeder/reeder_api:NEW_VERSION`
